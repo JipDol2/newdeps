@@ -1,0 +1,27 @@
+server:
+  port: 8080
+
+spring:
+  config:
+    activate:
+      on-profile: local
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/newdevps?useSSL=false&&allowPublicKeyRetrieval=true&characterEncoding=UTF-8&serverTimezone=UTC
+    username: admin
+    password: newdevps1!
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: create
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+    properties:
+      hibernate:
+#        show_sql: true
+        format_sql: true
+#    defer-datasource-initialization: true
+
+jwt:
+  secret: h2qRTFW0LM76tqMUf2RSInlD+D/VAaM5x6b9Y6hCCiU=
