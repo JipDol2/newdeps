@@ -1,12 +1,18 @@
 package lotte.newdevps.exception;
 
+import lombok.Getter;
+import lotte.newdevps.exception.response.ErrorResponse;
+import lotte.newdevps.exception.response.ErrorType;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 
+@Getter
 public class NewdevpsException extends RuntimeException{
 
-    private final HttpStatus httpStatus;
+    private final HttpStatusCode httpStatusCode;
+    private final ErrorType errorType = ErrorType.of(this.getClass());
 
-    public NewdevpsException(HttpStatus httpStatus) {
-        this.httpStatus = httpStatus;
+    public NewdevpsException(HttpStatusCode httpStatusCode) {
+        this.httpStatusCode = httpStatusCode;
     }
 }

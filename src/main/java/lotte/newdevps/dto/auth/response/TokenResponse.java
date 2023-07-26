@@ -1,4 +1,4 @@
-package lotte.newdevps.dto.auth;
+package lotte.newdevps.dto.auth.response;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

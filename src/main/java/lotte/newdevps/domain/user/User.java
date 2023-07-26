@@ -2,6 +2,7 @@ package lotte.newdevps.domain.user;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lotte.newdevps.domain.BaseTimeEntity;
@@ -33,4 +34,10 @@ public class User extends BaseTimeEntity {
 
     @OneToMany(mappedBy = "user")
     private List<Bookmark> bookmarks = new ArrayList<>();
+
+    @Builder
+    public User(String loginId, String nickname) {
+        this.loginId = loginId;
+        this.nickname = nickname;
+    }
 }

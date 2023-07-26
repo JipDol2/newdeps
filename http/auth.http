@@ -1,0 +1,7 @@
+###회원 로그인
+POST http://localhost:8080/api/auth/login/naver
+Content-Type: application/json
+
+{
+  "id" : "1773272"
+}

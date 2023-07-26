@@ -1,0 +1,8 @@
+### 회원가입
+POST http://localhost:8080/api/user/signUp
+Content-Type: application/json
+
+{
+  "loginId" : "1773272",
+  "nickname" : "jipdol2"
+}
