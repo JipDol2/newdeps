@@ -2,12 +2,12 @@ package lotte.newdevps.domain.place;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
 import lotte.newdevps.domain.BaseTimeEntity;
-import lotte.newdevps.domain.postPlace.PostPlace;
-import lotte.newdevps.domain.recommend.Recommend;
 import lotte.newdevps.domain.bookmark.Bookmark;
 import lotte.newdevps.domain.itineraryPlace.ItineraryPlace;
+import lotte.newdevps.domain.recommend.Recommend;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,10 +32,14 @@ public class Place extends BaseTimeEntity {
     @OneToMany(mappedBy = "place")
     private List<ItineraryPlace> itineraryPlaces = new ArrayList<>();
 
-    @OneToMany(mappedBy = "place")
-    private List<PostPlace> postPlaces = new ArrayList<>();
-
     @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "recommend_id",foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
     private Recommend recommend;
+
+    @Builder
+    public Place(Double latitude, Double longitude, PlaceCategory category) {
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.category = category;
+    }
 }
