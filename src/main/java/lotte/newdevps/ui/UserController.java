@@ -1,5 +1,6 @@
 package lotte.newdevps.ui;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import lotte.newdevps.application.UserService;
@@ -20,4 +21,5 @@ public class UserController {
     public void signUp(@RequestBody UserSignUpDTO userDto){
         userService.join(userDto);
     }
+
 }

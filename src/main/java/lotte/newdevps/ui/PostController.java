@@ -1,4 +1,4 @@
-package lotte.newdevps.ui.auth;
+package lotte.newdevps.ui;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

@@ -25,7 +25,8 @@ public class PostService {
         postRepository.save(post);
     }
 
-    public <T> ListPostResponse findByPostsAll(Long userId){
-        return new ListPostResponse(PostDTO.toDtoList(postRepository.findByAll(userId)));
+    public ListPostResponse findByPostsAll(Long userId){
+        List<Post> findByPosts = postRepository.findByAll(userId);
+        return new ListPostResponse(PostDTO.toDtoList(findByPosts),findByPosts.size());
     }
 }

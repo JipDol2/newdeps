@@ -7,10 +7,11 @@ spring:
       on-profile: local
 
   datasource:
-    url: jdbc:mysql://localhost:3306/newdevps?useSSL=false&&allowPublicKeyRetrieval=true&characterEncoding=UTF-8&serverTimezone=UTC
-    username: admin
-    password: newdevps1!
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:h2:tcp://localhost/~/newDeps;NON_KEYWORDS=USER
+    driver-class-name: org.h2.Driver
+    hikari:
+      username: sa
+      password:
 
   jpa:
     hibernate:

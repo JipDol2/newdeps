@@ -5,5 +5,3 @@ spring:
     password:
     driver-class-name: org.h2.Driver
 
-jwt:
-  secret: h2qRTFW0LM76tqMUf2RSInlD+D/VAaM5x6b9Y6hCCiU=
