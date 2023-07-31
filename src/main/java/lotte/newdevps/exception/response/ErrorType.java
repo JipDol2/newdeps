@@ -2,6 +2,7 @@ package lotte.newdevps.exception.response;
 
 import lombok.Getter;
 import lotte.newdevps.exception.NewdevpsException;
+import lotte.newdevps.exception.post.PostNotFoundException;
 import lotte.newdevps.exception.user.UserNotFoundException;
 
 import java.util.Arrays;
@@ -11,7 +12,9 @@ import java.util.Map;
 @Getter
 public enum ErrorType {
 
-    U001("M001","회원을 찾을 수 없습니다.", UserNotFoundException.class)
+    U001("U001","회원을 찾을 수 없습니다.", UserNotFoundException.class),
+
+    P001("P001","게시글을 찾을 수 없습니다.",PostNotFoundException.class)
     ;
 
     private String code;

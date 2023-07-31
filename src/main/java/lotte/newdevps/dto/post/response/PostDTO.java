@@ -10,7 +10,8 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Getter @Setter
+@Getter
+@Setter
 @NoArgsConstructor
 public class PostDTO {
 
@@ -31,9 +32,19 @@ public class PostDTO {
         this.dateTime = dateTime;
     }
 
-    public static List<PostDTO> toDtoList(List<Post> posts){
+    public static PostDTO toDto(Post post) {
+        return PostDTO.builder()
+                .content(post.getContent())
+                .placeTitle(post.getPlaceTitle())
+                .dateTime(post.getDateTime())
+                .latitude(post.getLatitude())
+                .longitude(post.getLongitude())
+                .build();
+    }
+
+    public static List<PostDTO> toDtoList(List<Post> posts) {
         return posts.stream()
-                .map(p->PostDTO.builder()
+                .map(p -> PostDTO.builder()
                         .content(p.getContent())
                         .placeTitle(p.getPlaceTitle())
                         .dateTime(p.getDateTime())

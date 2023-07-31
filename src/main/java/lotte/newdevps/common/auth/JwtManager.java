@@ -1,5 +1,7 @@
-package lotte.newdevps.infrastructure.auth;
+package lotte.newdevps.common.auth;
 
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.JwtParser;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.beans.factory.annotation.Value;
@@ -38,5 +40,18 @@ public class JwtManager {
 
     private Key getKey() {
         return Keys.hmacShaKeyFor(Base64.getDecoder().decode(KEY));
+    }
+
+    public Claims getClaims(String jwt){
+        Claims claims = Jwts.parserBuilder()
+                .setSigningKey(KEY)
+                .build()
+                .parseClaimsJws(jwt)
+                .getBody();
+        return claims;
+    }
+
+    public Long getId(String jwt){
+        return Long.parseLong(getClaims(jwt).getId());
     }
 }

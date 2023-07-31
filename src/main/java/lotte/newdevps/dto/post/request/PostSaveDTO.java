@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lotte.newdevps.domain.place.Place;
 import lotte.newdevps.domain.post.Post;
+import lotte.newdevps.domain.user.User;
+import lotte.newdevps.ui.auth.UserSession;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
@@ -30,13 +32,14 @@ public class PostSaveDTO {
         this.longitude = longitude;
     }
 
-    public static Post toEntity(PostSaveDTO dto){
+    public static Post toEntity(User user, PostSaveDTO dto){
         return Post.builder()
                 .content(dto.getContent())
                 .placeTitle(dto.getPlaceTitle())
                 .dateTime(dto.getDateTime())
                 .latitude(dto.getLatitude())
                 .longitude(dto.getLongitude())
+                .user(user)
                 .build();
     }
 }

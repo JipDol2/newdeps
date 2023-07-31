@@ -9,10 +9,10 @@ import org.springframework.http.HttpStatusCode;
 @Getter
 public class NewdevpsException extends RuntimeException{
 
-    private final HttpStatusCode httpStatusCode;
+//    private final HttpStatusCode httpStatusCode;
     private final ErrorType errorType = ErrorType.of(this.getClass());
 
-    public NewdevpsException(HttpStatusCode httpStatusCode) {
-        this.httpStatusCode = httpStatusCode;
-    }
+//    public NewdevpsException(HttpStatusCode httpStatusCode) {
+//        this.httpStatusCode = httpStatusCode;
+//    }
 }
