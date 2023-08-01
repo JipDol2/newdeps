@@ -30,7 +30,7 @@ public class AuthService {
         return TokenResponse.from(accessToken);
     }
 
-    public Long getClaimsId(String token){
+    public String getClaimsId(String token){
         return jwtManager.getId(token);
     }
 

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lotte.newdevps.domain.BaseTimeEntity;
 import lotte.newdevps.domain.comment.Comment;
 import lotte.newdevps.domain.user.User;
+import lotte.newdevps.dto.post.request.PostUpdateDTO;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class Post extends BaseTimeEntity {
 
     private Long viewCount;
 
-    private String placeTitle;
+    private String placeName;
 
     private Double latitude;
 
@@ -42,13 +43,21 @@ public class Post extends BaseTimeEntity {
     private List<Comment> comments = new ArrayList<>();
 
     @Builder
-    public Post(String content, String placeTitle, Double latitude, Double longitude, LocalDate dateTime, User user) {
+    public Post(String content, String placeName, Double latitude, Double longitude, LocalDate dateTime, User user) {
         this.content = content;
         this.viewCount = 0L;
-        this.placeTitle = placeTitle;
+        this.placeName = placeName;
         this.latitude = latitude;
         this.longitude = longitude;
         this.dateTime = dateTime;
         this.user = user;
+    }
+
+    public void updatePost(PostUpdateDTO dto){
+        this.content = dto.getContent();
+        this.placeName = dto.getPlaceName();
+        this.latitude = dto.getLatitude();
+        this.longitude = dto.getLongitude();
+        this.dateTime = dto.getDateTime();
     }
 }
