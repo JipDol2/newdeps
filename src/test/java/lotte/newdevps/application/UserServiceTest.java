@@ -47,7 +47,7 @@ class UserServiceTest {
         when(userRepository.findByLoginId(signUpDTO.getLoginId())).thenReturn(Optional.ofNullable(user));
 
         //when
-        userService.join(signUpDTO);
+        userService.join("GITHUB",signUpDTO);
 
         //then
         User findByUser = userRepository.findByLoginId(signUpDTO.getLoginId())

@@ -22,7 +22,7 @@ public class AuthController {
      */
     @PostMapping("/login/{socialType}")
     public CommonResponseEntity<TokenResponse> login(@PathVariable String socialType, @RequestBody LoginRequestDTO loginDto){
-        TokenResponse token = authService.login(socialType, loginDto);
+        TokenResponse token = authService.login(socialType.toUpperCase(), loginDto);
         return CommonResponseEntity.toResponseEntity(ResponseType.A001,token,1);
     }
 }

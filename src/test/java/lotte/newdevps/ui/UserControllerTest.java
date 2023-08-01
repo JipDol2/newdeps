@@ -45,7 +45,7 @@ class UserControllerTest {
         String json = objectMapper.writeValueAsString(signUpDTO);
 
         //when
-        doNothing().when(userService).join(any());
+        doNothing().when(userService).join(any(),any());
 
         //expected
         mockMvc.perform(post(URL+"/signUp")

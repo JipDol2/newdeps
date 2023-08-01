@@ -35,7 +35,7 @@ public class PostDTO {
     public static PostDTO toDto(Post post) {
         return PostDTO.builder()
                 .content(post.getContent())
-                .placeTitle(post.getPlaceTitle())
+                .placeTitle(post.getPlaceName())
                 .dateTime(post.getDateTime())
                 .latitude(post.getLatitude())
                 .longitude(post.getLongitude())
@@ -46,7 +46,7 @@ public class PostDTO {
         return posts.stream()
                 .map(p -> PostDTO.builder()
                         .content(p.getContent())
-                        .placeTitle(p.getPlaceTitle())
+                        .placeTitle(p.getPlaceName())
                         .dateTime(p.getDateTime())
                         .latitude(p.getLatitude())
                         .longitude(p.getLongitude())

@@ -4,17 +4,14 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lotte.newdevps.domain.post.Post;
 import lotte.newdevps.domain.user.User;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
 
-@Setter
 @Getter
 @NoArgsConstructor
-public class PostSaveDTO {
+public class PostUpdateDTO {
 
     private String content;
     private String placeName;
@@ -23,10 +20,8 @@ public class PostSaveDTO {
     private Double latitude;
     private Double longitude;
 
-    private MultipartFile imageFile;
-
     @Builder
-    public PostSaveDTO(String content, String placeName, LocalDate dateTime, Double latitude, Double longitude) {
+    public PostUpdateDTO(String content, String placeName, LocalDate dateTime, Double latitude, Double longitude) {
         this.content = content;
         this.placeName = placeName;
         this.dateTime = dateTime;
@@ -34,7 +29,7 @@ public class PostSaveDTO {
         this.longitude = longitude;
     }
 
-    public static Post toEntity(User user, PostSaveDTO dto){
+    public static Post toEntity(User user, PostUpdateDTO dto){
         return Post.builder()
                 .content(dto.getContent())
                 .placeName(dto.getPlaceName())
@@ -44,5 +39,4 @@ public class PostSaveDTO {
                 .user(user)
                 .build();
     }
-
 }
