@@ -1,14 +1,46 @@
 ### 게시글 저장
 POST http://localhost:8080/api/post
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkwODk2MzA3LCJleHAiOjE2OTA4OTY5MDd9.xK7cvFjQlGLVrPFLIxtCXBoCkpFcfr3WBehP6WJQZps
 Content-Type: application/json
 
 {
   "content" : "내용을 적다",
-  "placeTitle" : "도로명 주소",
+  "placeName" : "도로명 주소",
   "dateTime" : "2023-07-07",
   "latitude" : 12.8892,
   "longitude" : 49.77256
 }
 
+### 게시글 저장 2
+POST http://localhost:8080/api/post
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkwODk2MzA3LCJleHAiOjE2OTA4OTY5MDd9.xK7cvFjQlGLVrPFLIxtCXBoCkpFcfr3WBehP6WJQZps
+Content-Type: application/json
+
+{
+"content" : "내용을 또 적다",
+"placeName" : "도로명 주소를 또 적다",
+"dateTime" : "2023-07-07",
+"latitude" : 14.8892,
+"longitude" : 98.77256
+}
+
 ### 게시글 전체 조회
-GET http://localhost:8080/api/post/all?id=1
+GET http://localhost:8080/api/post/all
+
+### 게시글 단건 조회
+GET http://localhost:8080/api/post/1
+
+### 게시글 업데이트
+PUT http://localhost:8080/api/post/1
+Content-Type: application/json
+
+{
+  "content" : "내용을 수정하다",
+  "placeName" : "도로명 주소 수정하다",
+  "dateTime" : "2023-07-17",
+  "latitude" : 12.8892,
+  "longitude" : 49.77256
+}
+
+### 게시글 삭제
+DELETE http://localhost:8080/api/post/1

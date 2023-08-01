@@ -38,20 +38,20 @@ public class JwtManager {
                 .compact();
     }
 
-    private Key getKey() {
-        return Keys.hmacShaKeyFor(Base64.getDecoder().decode(KEY));
-    }
-
     public Claims getClaims(String jwt){
         Claims claims = Jwts.parserBuilder()
-                .setSigningKey(KEY)
+                .setSigningKey(getKey())
                 .build()
                 .parseClaimsJws(jwt)
                 .getBody();
         return claims;
     }
 
-    public Long getId(String jwt){
-        return Long.parseLong(getClaims(jwt).getId());
+    public String getId(String jwt){
+        return String.valueOf(getClaims(jwt).get("id"));
+    }
+
+    private Key getKey() {
+        return Keys.hmacShaKeyFor(Base64.getDecoder().decode(KEY));
     }
 }

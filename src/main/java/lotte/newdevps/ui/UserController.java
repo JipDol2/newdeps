@@ -1,15 +1,12 @@
 package lotte.newdevps.ui;
 
-import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import lotte.newdevps.application.UserService;
-import lotte.newdevps.common.response.CommonListResponseEntity;
 import lotte.newdevps.common.response.CommonResponseEntity;
 import lotte.newdevps.common.response.ResponseType;
 import lotte.newdevps.dto.user.request.UserSignUpDTO;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import lotte.newdevps.dto.user.response.UserDTO;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
@@ -23,10 +20,10 @@ public class UserController {
     /**
      * 유저 회원가입(U001)
      */
-    @PostMapping("/signUp")
-    public CommonResponseEntity signUp(@RequestBody UserSignUpDTO userDto){
-        userService.join(userDto);
-        return CommonResponseEntity.toResponseEntity(ResponseType.U001,null,0);
+    @PostMapping("/signUp/{socialType}")
+    public CommonResponseEntity<UserDTO> signUp(@PathVariable String socialType, @RequestBody UserSignUpDTO userDto){
+        UserDTO user = userService.join(socialType.toUpperCase(), userDto);
+        return CommonResponseEntity.toResponseEntity(ResponseType.U001,user,0);
     }
 
 }

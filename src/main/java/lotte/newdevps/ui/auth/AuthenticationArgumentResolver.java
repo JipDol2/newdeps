@@ -29,7 +29,7 @@ public class AuthenticationArgumentResolver implements HandlerMethodArgumentReso
         HttpServletRequest request = (HttpServletRequest) webRequest.getNativeRequest();
         String accessToken = request.getHeader("Authorization");
 
-        Long id = authService.getClaimsId(accessToken);
+        Long id = Long.parseLong(authService.getClaimsId(accessToken));
         User user = userRepository.findById(id)
                 .orElseThrow(UserNotFoundException::new);
 

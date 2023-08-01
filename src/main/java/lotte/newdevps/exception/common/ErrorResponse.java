@@ -1,4 +1,4 @@
-package lotte.newdevps.exception.response;
+package lotte.newdevps.exception.common;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -20,9 +20,7 @@ public class ErrorResponse{
         this.validation = validation == null ? new HashMap<>() : validation;
     }
 
-    public static ErrorResponse of(NewdevpsException exception){
-        ErrorType errorType = exception.getErrorType();
-
+    public static ErrorResponse of(ErrorType errorType){
         return ErrorResponse.builder()
                 .code(errorType.getCode())
                 .message(errorType.getMessage())
