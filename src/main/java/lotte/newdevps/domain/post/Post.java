@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lotte.newdevps.domain.BaseTimeEntity;
 import lotte.newdevps.domain.comment.Comment;
+import lotte.newdevps.domain.image.Image;
 import lotte.newdevps.domain.user.User;
 import lotte.newdevps.dto.post.request.PostUpdateDTO;
 
@@ -41,6 +42,9 @@ public class Post extends BaseTimeEntity {
 
     @OneToMany(mappedBy = "post")
     private List<Comment> comments = new ArrayList<>();
+
+    @OneToMany(mappedBy = "post")
+    private List<Image> images = new ArrayList<>();
 
     @Builder
     public Post(String content, String placeName, Double latitude, Double longitude, LocalDate dateTime, User user) {

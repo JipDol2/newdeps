@@ -10,6 +10,7 @@ import lotte.newdevps.domain.user.User;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Setter
 @Getter
@@ -23,7 +24,7 @@ public class PostSaveDTO {
     private Double latitude;
     private Double longitude;
 
-    private MultipartFile imageFile;
+    private List<MultipartFile> imageFiles;
 
     @Builder
     public PostSaveDTO(String content, String placeName, LocalDate dateTime, Double latitude, Double longitude) {
