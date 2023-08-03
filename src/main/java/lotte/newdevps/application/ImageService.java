@@ -3,6 +3,7 @@ package lotte.newdevps.application;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import lotte.newdevps.domain.image.ImageRepository;
+import lotte.newdevps.dto.image.ImageDTO;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,7 +22,6 @@ import java.util.UUID;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-//@Transactional
 public class ImageService {
 
     @Value("${com.upload.path}")
@@ -29,7 +29,7 @@ public class ImageService {
 
     private final ImageRepository imageRepository;
 
-    public String uploadImage(MultipartFile file){
+    public ImageDTO uploadImage(MultipartFile file){
 
         String today = String.valueOf(LocalDateTime.now().getYear());
         String folderPath = (uploadPath + "upload/" + today).replace("/", File.separator);
@@ -40,7 +40,7 @@ public class ImageService {
         }
 
         String uuid = UUID.randomUUID().toString();
-        String imageName = uuid + "_" + file.getOriginalFilename();
+        String imageName = uuid.substring(0,8) + "_" + file.getOriginalFilename();
         String saveName = folderPath + File.separator + imageName;
         Path path = Paths.get(saveName);
 
@@ -50,6 +50,10 @@ public class ImageService {
             e.printStackTrace();
         }
 
-        return imageName;
+        return ImageDTO.builder()
+                .originalFileName(file.getOriginalFilename())
+                .storedFileName(imageName)
+                .imagePath(saveName)
+                .build();
     }
 }

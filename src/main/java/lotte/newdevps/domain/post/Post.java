@@ -43,7 +43,7 @@ public class Post extends BaseTimeEntity {
     @OneToMany(mappedBy = "post")
     private List<Comment> comments = new ArrayList<>();
 
-    @OneToMany(mappedBy = "post")
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Image> images = new ArrayList<>();
 
     @Builder
@@ -63,5 +63,9 @@ public class Post extends BaseTimeEntity {
         this.latitude = dto.getLatitude();
         this.longitude = dto.getLongitude();
         this.dateTime = dto.getDateTime();
+    }
+
+    public void addImages(Image image){
+        image.setPost(this);
     }
 }
