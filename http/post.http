@@ -1,6 +1,6 @@
 ### 게시글 저장
 POST http://localhost:8080/api/post
-Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkwODk2MzA3LCJleHAiOjE2OTA4OTY5MDd9.xK7cvFjQlGLVrPFLIxtCXBoCkpFcfr3WBehP6WJQZps
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkwOTgyNjgwLCJleHAiOjE2OTA5ODMyODB9.RQTahaVwj6vkRqeEXXLyEgwlwLYetnUw08Y6dzus34s
 Content-Type: application/json
 
 {

@@ -17,7 +17,7 @@ public class JwtManager {
     @Value("${jwt.secret}")
     private String KEY;
 
-    private final static int ACCESS_TIME = 60 * 10 * 1000;  //10분
+    private final static int ACCESS_TIME = 60 * 30 * 1000;  //10분
 
     private final static int REFRESH_TIME = 60 * 20 * 1000; //20분
 
