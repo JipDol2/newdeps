@@ -5,8 +5,11 @@ import lombok.extern.slf4j.Slf4j;
 import lotte.newdevps.application.UserService;
 import lotte.newdevps.common.response.CommonResponseEntity;
 import lotte.newdevps.common.response.ResponseType;
+import lotte.newdevps.dto.user.request.UserProfileImageDTO;
 import lotte.newdevps.dto.user.request.UserSignUpDTO;
 import lotte.newdevps.dto.user.response.UserDTO;
+import lotte.newdevps.ui.auth.Authentication;
+import lotte.newdevps.ui.auth.UserSession;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
@@ -24,6 +27,15 @@ public class UserController {
     public CommonResponseEntity<UserDTO> signUp(@PathVariable String socialType, @RequestBody UserSignUpDTO userDto){
         UserDTO user = userService.join(socialType.toUpperCase(), userDto);
         return CommonResponseEntity.toResponseEntity(ResponseType.U001,user,0);
+    }
+
+    /**
+     * 유저 프로필 사진 업로드(U002)
+     */
+    @PostMapping("/profile/image")
+    public CommonResponseEntity<?> uplodaProfileImage(@Authentication UserSession session,
+                                                      @ModelAttribute UserProfileImageDTO imageDTO){
+        return CommonResponseEntity.toResponseEntity(ResponseType.U002,userService.saveProfileImage(session,imageDTO),1);
     }
 
 }

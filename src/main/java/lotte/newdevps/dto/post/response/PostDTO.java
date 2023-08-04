@@ -22,14 +22,23 @@ public class PostDTO {
     private Double longitude;
     private LocalDate dateTime;
 
+    private List<String> imagesPath;
+
     @Builder
-    public PostDTO(String content, Long viewCount, String placeTitle, Double latitude, Double longitude, LocalDate dateTime) {
+    public PostDTO(String content,
+                   Long viewCount,
+                   String placeTitle,
+                   Double latitude,
+                   Double longitude,
+                   LocalDate dateTime,
+                   List<String> imagesPath) {
         this.content = content;
         this.viewCount = viewCount;
         this.placeTitle = placeTitle;
         this.latitude = latitude;
         this.longitude = longitude;
         this.dateTime = dateTime;
+        this.imagesPath = imagesPath;
     }
 
     public static PostDTO toDto(Post post) {
