@@ -53,20 +53,18 @@ public class PostService {
         User user = userRepository.findById(session.getId())
                 .orElseThrow(UserNotFoundException::new);
 
-        Post post = PostSaveDTO.toEntity(user, postDto);
-
         List<MultipartFile> files = postDto.getImageFiles();
 
         List<ImageDTO> dtos = files.stream()
                 .map(file -> imageService.uploadImage(file))
                 .collect(Collectors.toList());
-
         dtos.forEach(dto -> dto.setType(ImageType.POST));
 
         List<Image> images = dtos.stream()
                 .map(dto -> ImageDTO.toImageEntity(dto))
                 .collect(Collectors.toList());
 
+        Post post = PostSaveDTO.toEntity(user, postDto);
         images.forEach(image -> post.addImages(image));
         Post findPost = postRepository.save(post);
 
