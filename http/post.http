@@ -7,7 +7,7 @@ content=내용을적다&placeName=도로명주소&dateTime=2023-08-04&latitude=1
 
 ### 게시글 저장 2
 POST http://localhost:8080/api/post
-Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkxMTMwNDI1LCJleHAiOjE2OTExMzIyMjV9.h7-zdSYKfz-45KoqJifXXiXWKnUahcrqPziwaT7Tsgc
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkxMjA3Mzk4LCJleHAiOjE2OTEyMDkxOTh9.eiNINTUCMFbAkRYiDf_VsDxfLRd-DskdY9w58SYbgBA
 Content-Type: multipart/form-data; boundary=boundary
 
 --boundary
@@ -32,6 +32,7 @@ Content-Disposition: form-data; name="longitude"
 49.7756
 --boundary
 Content-Disposition: form-data; name="imageFiles"; filename="test1.jpg";
+Content-Type: image/gif
 
 <D:\test1.jpg
 --boundary--

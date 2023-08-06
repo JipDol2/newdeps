@@ -4,6 +4,7 @@ import lombok.Getter;
 import lotte.newdevps.exception.MethodArgumentNotValid;
 import lotte.newdevps.exception.NewdevpsException;
 import lotte.newdevps.exception.http.InternalException;
+import lotte.newdevps.exception.place.PlaceNotFoundException;
 import lotte.newdevps.exception.post.PostNotFoundException;
 import lotte.newdevps.exception.user.DuplicatedUserException;
 import lotte.newdevps.exception.user.UserNotFoundException;
@@ -21,6 +22,8 @@ public enum ErrorType {
     EXU004("EXU004","닉네임은 필수값입니다.", MethodArgumentNotValid.class),
 
     EXP001("EXP001","게시글을 찾을 수 없습니다.",PostNotFoundException.class),
+
+    EXL001("EXL001","추천 장소를 찾을 수 없습니다.", PlaceNotFoundException.class),
 
     EXX001("EXX001","정의되지 않은 예외입니다.", InternalException.class)
     ;

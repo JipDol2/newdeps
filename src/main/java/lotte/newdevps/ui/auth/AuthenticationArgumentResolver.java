@@ -30,9 +30,7 @@ public class AuthenticationArgumentResolver implements HandlerMethodArgumentReso
         String accessToken = request.getHeader("Authorization");
 
         Long id = Long.parseLong(authService.getClaimsId(accessToken));
-        User user = userRepository.findById(id)
-                .orElseThrow(UserNotFoundException::new);
 
-        return UserSession.toUserSession(user);
+        return UserSession.toUserSession(id);
     }
 }
