@@ -32,8 +32,7 @@ public class UserService {
     }
 
     public String saveProfileImage(UserSession session,UserProfileImageDTO imageDTO){
-        User user = userRepository.findById(session.getId())
-                .orElseThrow(UserNotFoundException::new);
+        User user = userRepository.findById(session.getId()).get();
 
         ImageDTO uploadImage = imageService.uploadImage(imageDTO.getFile());
         uploadImage.setType(ImageType.PROFILE);

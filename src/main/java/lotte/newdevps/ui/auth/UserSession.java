@@ -8,16 +8,12 @@ import lotte.newdevps.domain.user.User;
 public class UserSession {
 
     private Long id;
-    private String loginId;
-    private String nickname;
 
-    public UserSession(Long id,String loginId, String nickname) {
+    public UserSession(Long id) {
         this.id = id;
-        this.loginId = loginId;
-        this.nickname = nickname;
     }
 
-    public static UserSession toUserSession(User user){
-        return new UserSession(user.getId(),user.getLoginId(),user.getNickname());
+    public static UserSession toUserSession(Long id){
+        return new UserSession(id);
     }
 }

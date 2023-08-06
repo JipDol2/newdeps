@@ -11,10 +11,12 @@ import lotte.newdevps.dto.auth.response.TokenResponse;
 import lotte.newdevps.exception.user.UserNotFoundException;
 import lotte.newdevps.common.auth.JwtManager;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Slf4j
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class AuthService {
 
     private final JwtManager jwtManager;
