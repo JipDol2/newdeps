@@ -50,8 +50,7 @@ public class PostService {
      * => 2. post 객체에 cascadeType.All 속성 추가(영속성 전이를 위해)
      */
     public PostDTO save(UserSession session, PostSaveDTO postDto) {
-        User user = userRepository.findById(session.getId())
-                .orElseThrow(UserNotFoundException::new);
+        User user = userRepository.findById(session.getId()).get();
 
         List<MultipartFile> files = postDto.getImageFiles();
 
