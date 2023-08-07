@@ -2,7 +2,6 @@ package lotte.newdevps.application;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import lotte.newdevps.common.util.ImageUtil;
 import lotte.newdevps.domain.image.Image;
 import lotte.newdevps.domain.image.ImageRepository;
 import lotte.newdevps.domain.image.ImageType;
@@ -15,15 +14,11 @@ import lotte.newdevps.dto.post.request.PostSaveDTO;
 import lotte.newdevps.dto.post.request.PostUpdateDTO;
 import lotte.newdevps.dto.post.response.PostDTO;
 import lotte.newdevps.exception.post.PostNotFoundException;
-import lotte.newdevps.exception.user.UserNotFoundException;
-import lotte.newdevps.ui.auth.UserSession;
-import org.springframework.beans.factory.annotation.Value;
+import lotte.newdevps.ui.auth.LoginSession;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -49,7 +44,7 @@ public class PostService {
      * => 1. post 를 먼저 save 한 뒤 영속성 컨텍스트에 저장이 되어있는 객체로 image save
      * => 2. post 객체에 cascadeType.All 속성 추가(영속성 전이를 위해)
      */
-    public PostDTO save(UserSession session, PostSaveDTO postDto) {
+    public PostDTO save(LoginSession session, PostSaveDTO postDto) {
         User user = userRepository.findById(session.getId()).get();
 
         List<MultipartFile> files = postDto.getImageFiles();

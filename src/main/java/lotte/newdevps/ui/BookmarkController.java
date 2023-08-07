@@ -5,11 +5,14 @@ import lombok.extern.slf4j.Slf4j;
 import lotte.newdevps.application.BookmarkService;
 import lotte.newdevps.common.response.CommonResponseEntity;
 import lotte.newdevps.common.response.ResponseType;
-import lotte.newdevps.dto.bookmark.BookmarkSaveDTO;
+import lotte.newdevps.dto.bookmark.request.BookmarkSaveDTO;
+import lotte.newdevps.dto.post.response.PostDTO;
 import lotte.newdevps.ui.auth.Authentication;
 import lotte.newdevps.ui.auth.NoAuth;
-import lotte.newdevps.ui.auth.UserSession;
+import lotte.newdevps.ui.auth.LoginSession;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Slf4j
 @RestController
@@ -23,17 +26,26 @@ public class BookmarkController {
      * 북마크 저장 (B001)
      */
     @NoAuth
-    @PostMapping("/{placeId}")
-    public CommonResponseEntity<?> saveBookmark(@Authentication UserSession session,@PathVariable Long placeId,@RequestBody BookmarkSaveDTO bookmarkDTO){
-        bookmarkService.saveBookmark(session,placeId,bookmarkDTO);
+    @PostMapping("/{id}")
+    public CommonResponseEntity<?> saveBookmark(@Authentication LoginSession session, @PathVariable Long id, @RequestBody BookmarkSaveDTO bookmarkDTO){
+        bookmarkService.saveBookmark(session,id,bookmarkDTO);
         return CommonResponseEntity.toResponseEntity(ResponseType.B001,null,0);
     }
 
     /**
-     * 북마크 조회 (B002)
+     * 추천 장소 북마크 조회 (B002)
      */
-    @GetMapping("/all")
-    public CommonResponseEntity<?> findByBookmarkList(@Authentication UserSession session){
+    @GetMapping("/place")
+    public CommonResponseEntity<?> findByRecommendBookmarkList(@Authentication LoginSession session){
         return null;
+    }
+
+    /**
+     * 게시글 북마크 조회 (B002)
+     */
+    @GetMapping("/post")
+    public CommonResponseEntity<?> findByNearbyBookmarkList(@Authentication LoginSession session){
+        List<PostDTO> postDtos = bookmarkService.findBookmarkPostList(session);
+        return CommonResponseEntity.toResponseEntity(ResponseType.B003,postDtos,postDtos.size());
     }
 }

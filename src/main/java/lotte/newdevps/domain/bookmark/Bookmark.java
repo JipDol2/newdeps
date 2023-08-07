@@ -7,11 +7,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lotte.newdevps.domain.BaseTimeEntity;
 import lotte.newdevps.domain.place.Place;
-import lotte.newdevps.domain.placeBookmark.PlaceBookmark;
+import lotte.newdevps.domain.post.Post;
 import lotte.newdevps.domain.user.User;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @Entity
@@ -29,17 +26,32 @@ public class Bookmark extends BaseTimeEntity {
     @JoinColumn(name = "user_id",foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
     private User user;
 
-    @OneToMany(mappedBy = "bookmark",cascade = CascadeType.ALL,orphanRemoval = true)
-    private List<PlaceBookmark> placeBookmarks = new ArrayList<>();
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "place_id",foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
+    private Place place;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "post_id",foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
+    private Post post;
 
     @Builder
-    public Bookmark(BookmarkType bookmarkType, User user) {
+    public Bookmark(BookmarkType bookmarkType, User user, Place place, Post post) {
         this.bookmarkType = bookmarkType;
         if(this.user != null){
             this.user.getBookmarks().remove(this);
         }
+
         this.user = user;
         user.getBookmarks().add(this);
-    }
 
+        if(place !=null) {
+            this.place = place;
+            place.setBookmark(this);
+        }
+
+        if(post!=null) {
+            this.post = post;
+            post.setBookmark(this);
+        }
+    }
 }

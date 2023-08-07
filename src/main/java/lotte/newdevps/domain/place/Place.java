@@ -8,7 +8,6 @@ import lombok.NoArgsConstructor;
 import lotte.newdevps.domain.BaseTimeEntity;
 import lotte.newdevps.domain.bookmark.Bookmark;
 import lotte.newdevps.domain.itineraryPlace.ItineraryPlace;
-import lotte.newdevps.domain.placeBookmark.PlaceBookmark;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,10 +31,10 @@ public class Place extends BaseTimeEntity {
     private String placeName;
 
     @OneToMany(mappedBy = "place")
-    private List<PlaceBookmark> placeBookmarks = new ArrayList<>();
-
-    @OneToMany(mappedBy = "place")
     private List<ItineraryPlace> itineraryPlaces = new ArrayList<>();
+
+    @OneToOne(mappedBy = "place")
+    private Bookmark bookmark;
 
     @Builder
     public Place(Double latitude, Double longitude, PlaceCategory category, String placeName) {
@@ -43,5 +42,9 @@ public class Place extends BaseTimeEntity {
         this.longitude = longitude;
         this.category = category;
         this.placeName = placeName;
+    }
+
+    public void setBookmark(Bookmark bookmark){
+        this.bookmark = bookmark;
     }
 }

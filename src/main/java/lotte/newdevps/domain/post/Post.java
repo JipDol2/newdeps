@@ -6,8 +6,10 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lotte.newdevps.domain.BaseTimeEntity;
+import lotte.newdevps.domain.bookmark.Bookmark;
 import lotte.newdevps.domain.comment.Comment;
 import lotte.newdevps.domain.image.Image;
+import lotte.newdevps.domain.place.Place;
 import lotte.newdevps.domain.user.User;
 import lotte.newdevps.dto.post.request.PostUpdateDTO;
 
@@ -46,6 +48,9 @@ public class Post extends BaseTimeEntity {
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Image> images = new ArrayList<>();
 
+    @OneToOne(mappedBy = "post")
+    private Bookmark bookmark;
+
     @Builder
     public Post(String content, String placeName, Double latitude, Double longitude, LocalDate dateTime, User user) {
         this.content = content;
@@ -67,5 +72,9 @@ public class Post extends BaseTimeEntity {
 
     public void addImages(Image image){
         image.setPost(this);
+    }
+
+    public void setBookmark(Bookmark bookmark){
+        this.bookmark = bookmark;
     }
 }
