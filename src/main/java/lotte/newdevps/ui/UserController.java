@@ -9,7 +9,7 @@ import lotte.newdevps.dto.user.request.UserProfileImageDTO;
 import lotte.newdevps.dto.user.request.UserSignUpDTO;
 import lotte.newdevps.dto.user.response.UserDTO;
 import lotte.newdevps.ui.auth.Authentication;
-import lotte.newdevps.ui.auth.UserSession;
+import lotte.newdevps.ui.auth.LoginSession;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
@@ -33,7 +33,7 @@ public class UserController {
      * 유저 프로필 사진 업로드(U002)
      */
     @PostMapping("/profile/image")
-    public CommonResponseEntity<?> uplodaProfileImage(@Authentication UserSession session,
+    public CommonResponseEntity<?> uplodaProfileImage(@Authentication LoginSession session,
                                                       @ModelAttribute UserProfileImageDTO imageDTO){
         return CommonResponseEntity.toResponseEntity(ResponseType.U002,userService.saveProfileImage(session,imageDTO),1);
     }

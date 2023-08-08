@@ -1,4 +1,4 @@
-package lotte.newdevps.dto.bookmark;
+package lotte.newdevps.dto.bookmark.request;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
