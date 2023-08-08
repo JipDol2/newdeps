@@ -3,9 +3,12 @@ package lotte.newdevps.ui;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import lotte.newdevps.application.BookmarkService;
+import lotte.newdevps.common.response.CommonListResponseEntity;
 import lotte.newdevps.common.response.CommonResponseEntity;
 import lotte.newdevps.common.response.ResponseType;
 import lotte.newdevps.dto.bookmark.request.BookmarkSaveDTO;
+import lotte.newdevps.dto.bookmark.response.BookmarkListDTO;
+import lotte.newdevps.dto.place.response.PlaceDTO;
 import lotte.newdevps.dto.post.response.PostDTO;
 import lotte.newdevps.ui.auth.Authentication;
 import lotte.newdevps.ui.auth.NoAuth;
@@ -41,11 +44,29 @@ public class BookmarkController {
     }
 
     /**
-     * 게시글 북마크 조회 (B002)
+     * 게시글 북마크 조회 (B003)
      */
-    @GetMapping("/post")
-    public CommonResponseEntity<?> findByNearbyBookmarkList(@Authentication LoginSession session){
-        List<PostDTO> postDtos = bookmarkService.findBookmarkPostList(session);
-        return CommonResponseEntity.toResponseEntity(ResponseType.B003,postDtos,postDtos.size());
+    @GetMapping("/list/post")
+    public CommonListResponseEntity<PostDTO> findByNearbyBookmarkList(@Authentication LoginSession session){
+        List<PostDTO> postDTOS = bookmarkService.findBookmarkPostList(session);
+        return CommonListResponseEntity.toListResponseEntity(ResponseType.B003,postDTOS,postDTOS.size());
+    }
+
+    /**
+     * 추천장소 북마크 조회(B004)
+     */
+    @GetMapping("/list/place")
+    public CommonListResponseEntity<PlaceDTO> findByRecommendPlaceList(@Authentication LoginSession session){
+        List<PlaceDTO> placeDTOS = bookmarkService.findBookmarkPlaceList(session);
+        return CommonListResponseEntity.toListResponseEntity(ResponseType.B004,placeDTOS,placeDTOS.size());
+    }
+
+    /**
+     * 컬렉션 조회(B005)
+     */
+    @GetMapping("/list")
+    public CommonListResponseEntity<BookmarkListDTO> findByBookmarkList(@Authentication LoginSession session){
+        List<BookmarkListDTO> bookmarkListDTOS = bookmarkService.findByBookmarkList(session);
+        return CommonListResponseEntity.toListResponseEntity(ResponseType.B005,bookmarkListDTOS,bookmarkListDTOS.size());
     }
 }

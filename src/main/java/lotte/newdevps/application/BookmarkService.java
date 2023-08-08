@@ -12,6 +12,8 @@ import lotte.newdevps.domain.post.PostRepository;
 import lotte.newdevps.domain.user.User;
 import lotte.newdevps.domain.user.UserRepository;
 import lotte.newdevps.dto.bookmark.request.BookmarkSaveDTO;
+import lotte.newdevps.dto.bookmark.response.BookmarkListDTO;
+import lotte.newdevps.dto.place.response.PlaceDTO;
 import lotte.newdevps.dto.post.response.PostDTO;
 import lotte.newdevps.exception.place.PlaceNotFoundException;
 import lotte.newdevps.exception.post.PostNotFoundException;
@@ -53,19 +55,27 @@ public class BookmarkService {
                 .place(place)
                 .post(post)
                 .build();
-
         bookmarkRepository.save(bookmark);
     }
 
-    public List<?> findBookmarkPlaceList() {
-        return null;
-    }
-
     public List<PostDTO> findBookmarkPostList(LoginSession session) {
-        List<Bookmark> bookmarks = bookmarkRepository.findAllByPostBookmark(session.getId());
+        List<Bookmark> bookmarks = bookmarkRepository.findAllByBookmarkPost(session.getId());
         List<PostDTO> posts = bookmarks.stream()
                 .map(bookmark -> PostDTO.toDto(bookmark.getPost()))
                 .collect(Collectors.toList());
         return posts;
+    }
+
+    public List<PlaceDTO> findBookmarkPlaceList(LoginSession session){
+        List<Bookmark> bookmarks = bookmarkRepository.findAllByBookmarkPlace(session.getId());
+        List<PlaceDTO> places = bookmarks.stream()
+                .map(bookmark -> PlaceDTO.toPlaceDto(bookmark.getPlace()))
+                .collect(Collectors.toList());
+        return places;
+    }
+
+    public List<BookmarkListDTO> findByBookmarkList(LoginSession session){
+        List<BookmarkListDTO> bookmarks = bookmarkRepository.findByBookmarkList(session.getId());
+        return bookmarks;
     }
 }
