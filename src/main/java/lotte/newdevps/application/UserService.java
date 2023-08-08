@@ -11,8 +11,7 @@ import lotte.newdevps.dto.image.ImageDTO;
 import lotte.newdevps.dto.user.request.UserProfileImageDTO;
 import lotte.newdevps.dto.user.request.UserSignUpDTO;
 import lotte.newdevps.dto.user.response.UserDTO;
-import lotte.newdevps.exception.user.UserNotFoundException;
-import lotte.newdevps.ui.auth.UserSession;
+import lotte.newdevps.ui.auth.LoginSession;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -31,7 +30,7 @@ public class UserService {
         return UserDTO.toDto(user);
     }
 
-    public String saveProfileImage(UserSession session,UserProfileImageDTO imageDTO){
+    public String saveProfileImage(LoginSession session, UserProfileImageDTO imageDTO){
         User user = userRepository.findById(session.getId()).get();
 
         ImageDTO uploadImage = imageService.uploadImage(imageDTO.getFile());

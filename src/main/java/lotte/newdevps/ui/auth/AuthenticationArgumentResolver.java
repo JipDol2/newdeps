@@ -3,11 +3,8 @@ package lotte.newdevps.ui.auth;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lotte.newdevps.application.AuthService;
-import lotte.newdevps.domain.user.User;
 import lotte.newdevps.domain.user.UserRepository;
-import lotte.newdevps.exception.user.UserNotFoundException;
 import org.springframework.core.MethodParameter;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.support.WebDataBinderFactory;
 import org.springframework.web.context.request.NativeWebRequest;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
@@ -31,6 +28,6 @@ public class AuthenticationArgumentResolver implements HandlerMethodArgumentReso
 
         Long id = Long.parseLong(authService.getClaimsId(accessToken));
 
-        return UserSession.toUserSession(id);
+        return LoginSession.toUserSession(id);
     }
 }

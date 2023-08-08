@@ -5,8 +5,8 @@ import lombok.Getter;
 @Getter
 public enum BookmarkType {
 
-    RECOMMENDTAB("추천텝"),
-    NEARBYTAB("내주변텝");
+    RECOMMEND_PLACE("추천장소"),
+    POST("게시글");
 
     private String name;
 
