@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import lotte.newdevps.application.AuthService;
 import lotte.newdevps.domain.user.UserRepository;
 import lotte.newdevps.ui.auth.AuthController;
+import lotte.newdevps.ui.auth.AuthInterceptor;
 import lotte.newdevps.ui.auth.AuthenticationArgumentResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,16 +19,17 @@ import java.util.List;
 public class WebMvcConfig implements WebMvcConfigurer {
 
     private final AuthService authService;
-    private final UserRepository userRepository;
+//    private final UserRepository userRepository;
 
     @Override
     public void addArgumentResolvers(List<HandlerMethodArgumentResolver> resolvers) {
-        resolvers.add(new AuthenticationArgumentResolver(authService,userRepository));
+        resolvers.add(new AuthenticationArgumentResolver(authService));
     }
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-//        registry.addInterceptor(new AuthInterceptor())
-//                .excludePathPatterns("/static/**","/css/**");
+        registry.addInterceptor(new AuthInterceptor(authService))
+                .excludePathPatterns("/static/**","/css/**");
     }
+
 }

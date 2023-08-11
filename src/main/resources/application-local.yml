@@ -7,11 +7,13 @@ spring:
       on-profile: local
 
   datasource:
-    url: jdbc:h2:tcp://localhost/~/newDevps;NON_KEYWORDS=USER
-    driver-class-name: org.h2.Driver
-    hikari:
-      username: sa
-      password:
+    url: jdbc:mysql://localhost:3307/dbtravelmaker2
+#    url: jdbc:h2:mem:newdevps;NON_KEYWORDS=USER
+#    driver-class-name: org.h2.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: newdeps
+    password: "!newdeps1234"
+
 
   jpa:
     hibernate:
@@ -28,6 +30,13 @@ spring:
     multipart:
       max-request-size: 10MB
       max-file-size: 10MB
+
+ssh:
+  remote_jump_host: 43.200.32.96
+  ssh_port: 22
+  user: newdeps
+  password: "!newdeps1234"
+  database_port: 3306
 
 com:
   upload:

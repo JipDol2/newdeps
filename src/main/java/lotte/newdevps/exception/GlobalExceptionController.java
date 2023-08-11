@@ -19,7 +19,7 @@ public class GlobalExceptionController extends ResponseEntityExceptionHandler {
     @ExceptionHandler({NewdevpsException.class})
     public ResponseEntity<Object> handlerNewdevpsException(NewdevpsException ex,WebRequest request){
         ErrorResponse errorResponse = ErrorResponse.of(ex.getErrorType());
-        return handleExceptionInternal(ex,errorResponse, null , HttpStatus.OK,request);
+        return handleExceptionInternal(ex,errorResponse, null , HttpStatus.INTERNAL_SERVER_ERROR,request);
     }
 
     @Override
@@ -29,7 +29,7 @@ public class GlobalExceptionController extends ResponseEntityExceptionHandler {
 
         ErrorType errorType = ErrorType.of(code);
         ErrorResponse errorResponse = ErrorResponse.of(errorType);
-        return handleExceptionInternal(ex, errorResponse, headers, HttpStatus.OK, request);
+        return handleExceptionInternal(ex, errorResponse, headers, HttpStatus.INTERNAL_SERVER_ERROR, request);
     }
 
     @Override

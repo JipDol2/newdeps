@@ -6,7 +6,6 @@ import lotte.newdevps.application.PlaceService;
 import lotte.newdevps.common.response.CommonListResponseEntity;
 import lotte.newdevps.common.response.CommonResponseEntity;
 import lotte.newdevps.common.response.ResponseType;
-import lotte.newdevps.domain.place.Place;
 import lotte.newdevps.dto.place.request.PlaceSaveDTO;
 import lotte.newdevps.dto.place.response.PlaceDTO;
 import org.springframework.web.bind.annotation.*;

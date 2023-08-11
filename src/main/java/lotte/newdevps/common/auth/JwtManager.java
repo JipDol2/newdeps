@@ -1,9 +1,12 @@
 package lotte.newdevps.common.auth;
 
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.JwtParser;
+import io.jsonwebtoken.ExpiredJwtException;
+import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import lotte.newdevps.exception.auth.TokenExpiredException;
+import lotte.newdevps.exception.auth.TokenInvalidException;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
@@ -53,5 +56,18 @@ public class JwtManager {
 
     private Key getKey() {
         return Keys.hmacShaKeyFor(Base64.getDecoder().decode(KEY));
+    }
+
+    public void validationToken(String jwt){
+        try{
+            Jwts.parserBuilder()
+                    .setSigningKey(getKey())
+                    .build()
+                    .parseClaimsJws(jwt);
+        }catch (ExpiredJwtException e){
+            throw new TokenExpiredException();
+        }catch (NullPointerException | JwtException | IllegalArgumentException e){
+            throw new TokenInvalidException();
+        }
     }
 }

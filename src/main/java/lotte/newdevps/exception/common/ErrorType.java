@@ -3,6 +3,8 @@ package lotte.newdevps.exception.common;
 import lombok.Getter;
 import lotte.newdevps.exception.MethodArgumentNotValid;
 import lotte.newdevps.exception.NewdevpsException;
+import lotte.newdevps.exception.auth.TokenExpiredException;
+import lotte.newdevps.exception.auth.TokenInvalidException;
 import lotte.newdevps.exception.http.InternalException;
 import lotte.newdevps.exception.place.PlaceNotFoundException;
 import lotte.newdevps.exception.post.PostNotFoundException;
@@ -24,6 +26,9 @@ public enum ErrorType {
     EXP001("EXP001","게시글을 찾을 수 없습니다.",PostNotFoundException.class),
 
     EXL001("EXL001","추천 장소를 찾을 수 없습니다.", PlaceNotFoundException.class),
+
+    EXT001("EXT001","토큰이 유효하지 않습니다.", TokenInvalidException.class),
+    EXT002("EXT002","기한이 만료된 토큰입니다.", TokenExpiredException.class),
 
     EXX001("EXX001","정의되지 않은 예외입니다.", InternalException.class)
     ;

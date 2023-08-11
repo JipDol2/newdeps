@@ -10,6 +10,7 @@ import lotte.newdevps.dto.user.request.UserSignUpDTO;
 import lotte.newdevps.dto.user.response.UserDTO;
 import lotte.newdevps.ui.auth.Authentication;
 import lotte.newdevps.ui.auth.LoginSession;
+import lotte.newdevps.ui.auth.NoAuth;
 import org.springframework.web.bind.annotation.*;
 
 @Slf4j
@@ -23,6 +24,7 @@ public class UserController {
     /**
      * 유저 회원가입(U001)
      */
+    @NoAuth
     @PostMapping("/signUp/{socialType}")
     public CommonResponseEntity<UserDTO> signUp(@PathVariable String socialType, @RequestBody UserSignUpDTO userDto){
         UserDTO user = userService.join(socialType.toUpperCase(), userDto);

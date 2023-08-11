@@ -14,7 +14,6 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 public class AuthenticationArgumentResolver implements HandlerMethodArgumentResolver{
 
     private final AuthService authService;
-    private final UserRepository userRepository;
 
     @Override
     public boolean supportsParameter(MethodParameter parameter) {

@@ -1,15 +1,13 @@
 package lotte.newdevps.application;
 
-import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwts;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import lotte.newdevps.common.auth.JwtManager;
 import lotte.newdevps.domain.user.User;
 import lotte.newdevps.domain.user.UserRepository;
 import lotte.newdevps.dto.auth.request.LoginRequestDTO;
 import lotte.newdevps.dto.auth.response.TokenResponse;
 import lotte.newdevps.exception.user.UserNotFoundException;
-import lotte.newdevps.common.auth.JwtManager;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -36,4 +34,7 @@ public class AuthService {
         return jwtManager.getId(token);
     }
 
+    public void validationToken(String token){
+        jwtManager.validationToken(token);
+    }
 }

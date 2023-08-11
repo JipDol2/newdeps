@@ -7,7 +7,11 @@ content=내용을적다&placeName=도로명주소&dateTime=2023-08-04&latitude=1
 
 ### 게시글 저장 2
 POST http://localhost:8080/api/post
+<<<<<<< Updated upstream
 Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkxNTAyMzcyLCJleHAiOjE2OTE1MDQxNzJ9.O_CDFSF4EWmPGiG8e-6pd5wDUd5UkiG6h6zXd9hSRRA
+=======
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkxNjc0ODYwLCJleHAiOjE2OTE2NzY2NjB9.lKFVLjoPbfU1Lj_neXgqpWN1beQwVrvFxmBjsKE0_-k
+>>>>>>> Stashed changes
 Content-Type: multipart/form-data; boundary=boundary
 
 --boundary
@@ -39,12 +43,15 @@ Content-Type: image/gif
 
 ### 게시글 전체 조회
 GET http://localhost:8080/api/post/all
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkxNjc0ODYwLCJleHAiOjE2OTE2NzY2NjB9.lKFVLjoPbfU1Lj_neXgqpWN1beQwVrvFxmBjsKE0_-k
 
 ### 게시글 단건 조회
 GET http://localhost:8080/api/post/1
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkxNjc0ODYwLCJleHAiOjE2OTE2NzY2NjB9.lKFVLjoPbfU1Lj_neXgqpWN1beQwVrvFxmBjsKE0_-k
 
 ### 게시글 업데이트
 PUT http://localhost:8080/api/post/1
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkxNjc0ODYwLCJleHAiOjE2OTE2NzY2NjB9.lKFVLjoPbfU1Lj_neXgqpWN1beQwVrvFxmBjsKE0_-k
 Content-Type: application/json
 
 {

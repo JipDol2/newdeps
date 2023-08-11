@@ -20,6 +20,7 @@ public class AuthController {
     /**
      * 로그인(A001)
      */
+    @NoAuth
     @PostMapping("/login/{socialType}")
     public CommonResponseEntity<TokenResponse> login(@PathVariable String socialType, @RequestBody LoginRequestDTO loginDto){
         TokenResponse token = authService.login(socialType.toUpperCase(), loginDto);
