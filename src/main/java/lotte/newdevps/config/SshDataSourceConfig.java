@@ -1,7 +1,8 @@
-package lotte.newdevps.ssh;
+package lotte.newdevps.config;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import lotte.newdevps.ssh.SshTunnelingInitializer;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;

@@ -29,7 +29,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new AuthInterceptor(authService))
-                .excludePathPatterns("/static/**","/css/**");
+                .excludePathPatterns("/static/**","/css/**")
+                .addPathPatterns("/api/**");
     }
 
 }
