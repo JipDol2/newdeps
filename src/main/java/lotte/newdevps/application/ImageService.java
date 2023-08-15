@@ -24,7 +24,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class ImageService {
 
-    @Value("${com.upload.path}")
+    @Value("${com.upload.path.windows}")
     private String uploadPath;
 
     private final ImageRepository imageRepository;
@@ -55,5 +55,13 @@ public class ImageService {
                 .storedFileName(imageName)
                 .imagePath(saveName)
                 .build();
+    }
+
+    public void removeImage(String imagePath){
+        File file = new File(imagePath);
+
+        if(file.exists()){
+            file.delete();
+        }
     }
 }

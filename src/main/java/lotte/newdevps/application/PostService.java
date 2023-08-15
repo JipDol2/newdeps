@@ -3,7 +3,6 @@ package lotte.newdevps.application;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import lotte.newdevps.domain.image.Image;
-import lotte.newdevps.domain.image.ImageRepository;
 import lotte.newdevps.domain.image.ImageType;
 import lotte.newdevps.domain.post.Post;
 import lotte.newdevps.domain.post.PostRepository;
@@ -31,7 +30,6 @@ public class PostService {
     private final PostRepository postRepository;
     private final UserRepository userRepository;
     private final ImageService imageService;
-    private final ImageRepository imageRepository;
 
     /**
      * Issue

@@ -8,9 +8,10 @@ import lotte.newdevps.domain.image.ImageType;
 import lotte.newdevps.domain.user.User;
 import lotte.newdevps.domain.user.UserRepository;
 import lotte.newdevps.dto.image.ImageDTO;
-import lotte.newdevps.dto.user.request.UserProfileImageDTO;
+import lotte.newdevps.dto.user.request.UserProfileImageRequestDTO;
 import lotte.newdevps.dto.user.request.UserSignUpDTO;
 import lotte.newdevps.dto.user.response.UserDTO;
+import lotte.newdevps.dto.user.response.UserProfileImageResponseDTO;
 import lotte.newdevps.ui.auth.LoginSession;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -30,8 +31,13 @@ public class UserService {
         return UserDTO.toDto(user);
     }
 
-    public String saveProfileImage(LoginSession session, UserProfileImageDTO imageDTO){
+    public UserProfileImageResponseDTO saveProfileImage(LoginSession session, UserProfileImageRequestDTO imageDTO){
         User user = userRepository.findById(session.getId()).get();
+
+        //user 에 이미 존재하는 image 가 있다면 삭제를 진행해야한다.
+        if(user.getImage()!=null){
+            imageService.removeImage(user.getImage().getImagePath());
+        }
 
         ImageDTO uploadImage = imageService.uploadImage(imageDTO.getFile());
         uploadImage.setType(ImageType.PROFILE);
@@ -39,7 +45,7 @@ public class UserService {
         Image saveImage = imageRepository.save(ImageDTO.toImageEntity(uploadImage));
         user.setImage(saveImage);
 
-        return saveImage.getImagePath();
+        return new UserProfileImageResponseDTO(saveImage.getImagePath());
     }
 
 }
