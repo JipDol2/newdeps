@@ -7,13 +7,19 @@ spring:
       on-profile: local
 
   datasource:
-    url: jdbc:mysql://localhost:3307/dbtravelmaker2
-#    url: jdbc:h2:mem:newdevps;NON_KEYWORDS=USER
-#    driver-class-name: org.h2.Driver
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    username: newdeps
-    password: "!newdeps1234"
+#    url: jdbc:mysql://localhost:3307/dbtravelmaker2
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    username: newdeps
+#    password: "!newdeps1234"
 
+    url: jdbc:h2:mem:newDevps;NON_KEYWORDS=USER
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  h2:
+    console:
+      enabled: true
 
   jpa:
     hibernate:
@@ -40,7 +46,10 @@ ssh:
 
 com:
   upload:
-    path: D:/
+    path:
+      windows: D:/
+      linux: /home/newdeps/newdeps
+      mac:
 
 jwt:
   secret: h2qRTFW0LM76tqMUf2RSInlD+D/VAaM5x6b9Y6hCCiU=

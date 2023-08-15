@@ -5,9 +5,10 @@ import lombok.extern.slf4j.Slf4j;
 import lotte.newdevps.application.UserService;
 import lotte.newdevps.common.response.CommonResponseEntity;
 import lotte.newdevps.common.response.ResponseType;
-import lotte.newdevps.dto.user.request.UserProfileImageDTO;
+import lotte.newdevps.dto.user.request.UserProfileImageRequestDTO;
 import lotte.newdevps.dto.user.request.UserSignUpDTO;
 import lotte.newdevps.dto.user.response.UserDTO;
+import lotte.newdevps.dto.user.response.UserProfileImageResponseDTO;
 import lotte.newdevps.ui.auth.Authentication;
 import lotte.newdevps.ui.auth.LoginSession;
 import lotte.newdevps.ui.auth.NoAuth;
@@ -35,8 +36,8 @@ public class UserController {
      * 유저 프로필 사진 업로드(U002)
      */
     @PostMapping("/profile/image")
-    public CommonResponseEntity<?> uplodaProfileImage(@Authentication LoginSession session,
-                                                      @ModelAttribute UserProfileImageDTO imageDTO){
+    public CommonResponseEntity<UserProfileImageResponseDTO> uploadProfileImage(@Authentication LoginSession session,
+                                                                                @ModelAttribute UserProfileImageRequestDTO imageDTO){
         return CommonResponseEntity.toResponseEntity(ResponseType.U002,userService.saveProfileImage(session,imageDTO),1);
     }
 
