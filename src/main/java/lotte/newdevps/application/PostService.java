@@ -47,25 +47,37 @@ public class PostService {
 
         List<MultipartFile> files = postDto.getImageFiles();
 
-        List<ImageDTO> dtos = files.stream()
-                .map(file -> imageService.uploadImage(file))
-                .collect(Collectors.toList());
-        dtos.forEach(dto -> dto.setType(ImageType.POST));
+        List<ImageDTO> transferDTO = imagesUpload(files);
 
-        List<Image> images = dtos.stream()
+        //ImageDTO(dto) -> Image(entity)
+        List<Image> images = transferDTO.stream()
                 .map(dto -> ImageDTO.toImageEntity(dto))
                 .collect(Collectors.toList());
 
-        Post post = PostSaveDTO.toEntity(user, postDto);
-        images.forEach(image -> post.addImages(image));
-        Post findPost = postRepository.save(post);
+        Post savePost = savePost(postDto, user, images);
 
-        PostDTO postDTO = PostDTO.toDto(findPost);
-        postDTO.setImagesPath(dtos.stream()
+        //Post(entity) -> PostDTO(dto)
+        PostDTO postDTO = PostDTO.toDto(savePost);
+        postDTO.setImagesPath(transferDTO.stream()
                 .map(image->image.getImagePath())
-                .collect(Collectors.toList())
-        );
+                .collect(Collectors.toList()));
         return postDTO;
+    }
+
+    private Post savePost(PostSaveDTO postDto, User user, List<Image> images) {
+        Post post = PostSaveDTO.toEntity(user, postDto);
+        post.addImages(images);
+//        images.forEach(image -> post.addImages(image));
+        Post savePost = postRepository.save(post);
+        return savePost;
+    }
+
+    private List<ImageDTO> imagesUpload(List<MultipartFile> files) {
+        List<ImageDTO> imageDTO = files.stream()
+                .map(file -> imageService.uploadImage(file))
+                .collect(Collectors.toList());
+        imageDTO.forEach(dto -> dto.setType(ImageType.POST));
+        return imageDTO;
     }
 
     public List<PostDTO> findByPostsAll() {

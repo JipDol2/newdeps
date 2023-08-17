@@ -9,12 +9,12 @@ Content-Type: application/json
 
 ### 프로필 사진 업로드
 POST http://localhost:8080/api/user/profile/image
-Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkyMDE2NDQwLCJleHAiOjE2OTIwMTgyNDB9.Z6JekYc4TG_fmF4gtZGP-cNhK9uDyVwlJJp7tqz2V-4
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkyMjUxMTg0LCJleHAiOjE2OTIyNTI5ODR9.nT-szVDg-GPOxGzQ3shQUxSRSte0mDlT6AurnM_QFG0
 Content-Type: multipart/form-data; boundary=boundary
 
 --boundary
-Content-Disposition: form-data; name="file"; filename="test2.jpg";
+Content-Disposition: form-data; name="file"; filename=null;
 Content-Type: image/gif
 
-<D:\test2.jpg
+#<D:\test2.jpg
 --boundary--

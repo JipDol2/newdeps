@@ -47,9 +47,9 @@ ssh:
 com:
   upload:
     path:
-      windows: D:/
-      linux: /home/newdeps/newdeps
-      mac:
+      D:/
+#      /home/newdeps/newdeps
+
 
 jwt:
   secret: h2qRTFW0LM76tqMUf2RSInlD+D/VAaM5x6b9Y6hCCiU=

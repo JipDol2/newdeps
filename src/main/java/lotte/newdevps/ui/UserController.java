@@ -1,5 +1,6 @@
 package lotte.newdevps.ui;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import lotte.newdevps.application.UserService;
@@ -27,7 +28,7 @@ public class UserController {
      */
     @NoAuth
     @PostMapping("/signUp/{socialType}")
-    public CommonResponseEntity<UserDTO> signUp(@PathVariable String socialType, @RequestBody UserSignUpDTO userDto){
+    public CommonResponseEntity<UserDTO> signUp(@PathVariable String socialType, @RequestBody @Valid UserSignUpDTO userDto){
         UserDTO user = userService.join(socialType.toUpperCase(), userDto);
         return CommonResponseEntity.toResponseEntity(ResponseType.U001,user,0);
     }
@@ -37,7 +38,7 @@ public class UserController {
      */
     @PostMapping("/profile/image")
     public CommonResponseEntity<UserProfileImageResponseDTO> uploadProfileImage(@Authentication LoginSession session,
-                                                                                @ModelAttribute UserProfileImageRequestDTO imageDTO){
+                                                                                @ModelAttribute @Valid UserProfileImageRequestDTO imageDTO){
         return CommonResponseEntity.toResponseEntity(ResponseType.U002,userService.saveProfileImage(session,imageDTO),1);
     }
 
