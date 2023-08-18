@@ -13,12 +13,14 @@ import lotte.newdevps.dto.post.request.PostSaveDTO;
 import lotte.newdevps.dto.post.request.PostUpdateDTO;
 import lotte.newdevps.dto.post.response.PostDTO;
 import lotte.newdevps.exception.post.PostNotFoundException;
+import lotte.newdevps.exception.user.UserNotFoundException;
 import lotte.newdevps.ui.auth.LoginSession;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -43,41 +45,36 @@ public class PostService {
      * => 2. post 객체에 cascadeType.All 속성 추가(영속성 전이를 위해)
      */
     public PostDTO save(LoginSession session, PostSaveDTO postDto) {
-        User user = userRepository.findById(session.getId()).get();
+        User user = userRepository.findById(session.getId())
+                .orElseThrow(()->new UserNotFoundException());
 
-        List<MultipartFile> files = postDto.getImageFiles();
-
-        List<ImageDTO> transferDTO = imagesUpload(files);
-
-        //ImageDTO(dto) -> Image(entity)
-        List<Image> images = transferDTO.stream()
-                .map(dto -> ImageDTO.toImageEntity(dto))
-                .collect(Collectors.toList());
-
-        Post savePost = savePost(postDto, user, images);
+        Post savePost = savePost(postDto, user, imagesUpload(postDto.getImageFiles()));
 
         //Post(entity) -> PostDTO(dto)
-        PostDTO postDTO = PostDTO.toDto(savePost);
-        postDTO.setImagesPath(transferDTO.stream()
-                .map(image->image.getImagePath())
-                .collect(Collectors.toList()));
-        return postDTO;
+        return PostDTO.toDto(savePost);
+    }
+
+    private List<Image> imagesUpload(List<MultipartFile> files) {
+
+        if(files == null){
+            return null;
+        }
+
+        List<ImageDTO> imageDTO = files.stream()
+                .map(file -> imageService.uploadImage(file))
+                .collect(Collectors.toList());
+        imageDTO.forEach(dto -> dto.setType(ImageType.POST));
+
+        //ImageDTO(dto) -> Image(entity)
+        return imageDTO.stream()
+                .map(dto -> ImageDTO.toImageEntity(dto))
+                .collect(Collectors.toList());
     }
 
     private Post savePost(PostSaveDTO postDto, User user, List<Image> images) {
         Post post = PostSaveDTO.toEntity(user, postDto);
         post.addImages(images);
-//        images.forEach(image -> post.addImages(image));
-        Post savePost = postRepository.save(post);
-        return savePost;
-    }
-
-    private List<ImageDTO> imagesUpload(List<MultipartFile> files) {
-        List<ImageDTO> imageDTO = files.stream()
-                .map(file -> imageService.uploadImage(file))
-                .collect(Collectors.toList());
-        imageDTO.forEach(dto -> dto.setType(ImageType.POST));
-        return imageDTO;
+        return postRepository.save(post);
     }
 
     public List<PostDTO> findByPostsAll() {
@@ -87,6 +84,7 @@ public class PostService {
     public PostDTO findByPostOne(Long postId) {
         Post post = postRepository.findById(postId)
                 .orElseThrow(PostNotFoundException::new);
+        post.countView();
         return PostDTO.toDto(post);
     }
 

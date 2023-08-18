@@ -70,11 +70,16 @@ public class Post extends BaseTimeEntity {
     }
 
     public void addImages(List<Image> images){
-        images.forEach(image->image.setPost(this));
-//        image.setPost(this);
+        if(images != null) {
+            images.forEach(image -> image.setPost(this));
+        }
     }
 
     public void setBookmark(Bookmark bookmark){
         this.bookmark = bookmark;
+    }
+
+    public void countView(){
+        this.viewCount++;
     }
 }

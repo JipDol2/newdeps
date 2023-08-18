@@ -11,6 +11,7 @@ import lotte.newdevps.domain.user.User;
 @Getter
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Table(name = "IMAGE")
 public class Image {
 
     @Id @GeneratedValue
