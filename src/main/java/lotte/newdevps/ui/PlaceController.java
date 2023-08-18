@@ -34,7 +34,7 @@ public class PlaceController {
     @GetMapping("/all")
     public CommonListResponseEntity<PlaceDTO> findByPlaceAll(){
         List<PlaceDTO> placeAll = placeService.findByPlaceAll();
-        return CommonListResponseEntity.toListResponseEntity(ResponseType.L001,placeAll,placeAll.size());
+        return CommonListResponseEntity.toListResponseEntity(ResponseType.L002,placeAll,placeAll.size());
     }
 
     /**
@@ -42,6 +42,6 @@ public class PlaceController {
      */
     @PostMapping
     public CommonListResponseEntity<PlaceDTO> savePlace(@RequestBody List<PlaceSaveDTO> placeDTO){
-        return CommonListResponseEntity.toListResponseEntity(null,placeService.save(placeDTO),0);
+        return CommonListResponseEntity.toListResponseEntity(ResponseType.L003,placeService.save(placeDTO),0);
     }
 }
