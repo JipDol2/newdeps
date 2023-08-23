@@ -28,7 +28,6 @@ public class BookmarkController {
     /**
      * 북마크 저장 (B001)
      */
-
     @NoAuth
     @PostMapping("/{id}")
     public CommonResponseEntity<?> saveBookmark(@Authentication LoginSession session, @PathVariable Long id, @RequestBody BookmarkSaveDTO bookmarkDTO){
