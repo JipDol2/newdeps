@@ -22,6 +22,7 @@ public enum ErrorType {
     EXU002("EXU002","중복된 회원이 존재합니다.", DuplicatedUserException.class),
     EXU003("EXU003","로그인 아이디는 필수값입니다.", MethodArgumentNotValid.class),
     EXU004("EXU004","닉네임은 필수값입니다.", MethodArgumentNotValid.class),
+    EXU005("EXU005","프로필 사진은 필수값입니다.", MethodArgumentNotValid.class),
 
     EXP001("EXP001","게시글을 찾을 수 없습니다.",PostNotFoundException.class),
 

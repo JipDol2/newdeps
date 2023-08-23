@@ -1,13 +1,33 @@
 ### 게시글 저장
 POST http://localhost:8080/api/post
-Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkxMTI3MDk1LCJleHAiOjE2OTExMjg4OTV9.kPjwWOzb0ub63x9W5T7S1kqaAh5F_1ug9-OC2EKO0mw
-Content-Type: application/x-www-form-urlencoded
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkyMzY1MDkzLCJleHAiOjE2OTIzNjY4OTN9.YwuWpWklIb3iUEIbeQM6FVX3MZWQW0LD7G1LTOGHEIg
+Content-Type: multipart/form-data; boundary=boundary
 
-content=내용을적다&placeName=도로명주소&dateTime=2023-08-04&latitude=12.8892&longitude=49.7756
+--boundary
+Content-Disposition: form-data; name="content"
+
+save Post
+--boundary
+Content-Disposition: form-data; name="placeName"
+
+LA street 28-19
+--boundary
+Content-Disposition: form-data; name="dateTime"
+
+2023-08-04
+--boundary
+Content-Disposition: form-data; name="latitude"
+
+12.8892
+--boundary
+Content-Disposition: form-data; name="longitude"
+
+49.7756
+--boundary--
 
 ### 게시글 저장 2
 POST http://localhost:8080/api/post
-Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkyMDA4MTI3LCJleHAiOjE2OTIwMDk5Mjd9.lTZQSY1qpScZ3ZK4elNq74OQ_yFxJjQNeIPMEO9ynCc
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkyMzY2ODM2LCJleHAiOjE2OTIzNjg2MzZ9.6UVjZeM1TkypwD1Uu7ecNZhp7RtP_d99fm7XkE4PY70
 Content-Type: multipart/form-data; boundary=boundary
 
 --boundary
@@ -31,15 +51,15 @@ Content-Disposition: form-data; name="longitude"
 
 49.7756
 --boundary
-Content-Disposition: form-data; name="imageFiles"; filename="test1.jpg";
+Content-Disposition: form-data; name="imageFiles"; filename="test.jpg";
 Content-Type: image/gif
 
-<D:\test1.jpg
+<D:\test.jpg
 --boundary--
 
 ### 게시글 전체 조회
 GET http://localhost:8080/api/post/all
-Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkxNjc0ODYwLCJleHAiOjE2OTE2NzY2NjB9.lKFVLjoPbfU1Lj_neXgqpWN1beQwVrvFxmBjsKE0_-k
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkyMzY1MDkzLCJleHAiOjE2OTIzNjY4OTN9.YwuWpWklIb3iUEIbeQM6FVX3MZWQW0LD7G1LTOGHEIg
 
 ### 게시글 단건 조회
 GET http://localhost:8080/api/post/1

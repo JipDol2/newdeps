@@ -17,6 +17,7 @@ import lotte.newdevps.dto.place.response.PlaceDTO;
 import lotte.newdevps.dto.post.response.PostDTO;
 import lotte.newdevps.exception.place.PlaceNotFoundException;
 import lotte.newdevps.exception.post.PostNotFoundException;
+import lotte.newdevps.exception.user.UserNotFoundException;
 import lotte.newdevps.ui.auth.LoginSession;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,16 +38,18 @@ public class BookmarkService {
 
     public void saveBookmark(LoginSession session, Long id, BookmarkSaveDTO bookmarkDto) {
 
-        User user = userRepository.findById(session.getId()).get();
+        User user = userRepository.findById(session.getId())
+                .orElseThrow(()-> new UserNotFoundException());
 
         Place place = null;
         Post post = null;
         if (bookmarkDto.getBookmarkType().equals(BookmarkType.RECOMMEND_PLACE)) {
             place = placeRepository.findById(id)
                     .orElseThrow(() -> new PlaceNotFoundException());
-        }else{
+        }
+        if (bookmarkDto.getBookmarkType().equals(BookmarkType.POST)) {
             post = postRepository.findById(id)
-                    .orElseThrow(()-> new PostNotFoundException());
+                    .orElseThrow(() -> new PostNotFoundException());
         }
 
         Bookmark bookmark = Bookmark.builder()
@@ -66,7 +69,7 @@ public class BookmarkService {
         return posts;
     }
 
-    public List<PlaceDTO> findBookmarkPlaceList(LoginSession session){
+    public List<PlaceDTO> findBookmarkPlaceList(LoginSession session) {
         List<Bookmark> bookmarks = bookmarkRepository.findAllByBookmarkPlace(session.getId());
         List<PlaceDTO> places = bookmarks.stream()
                 .map(bookmark -> PlaceDTO.toPlaceDto(bookmark.getPlace()))
@@ -74,7 +77,7 @@ public class BookmarkService {
         return places;
     }
 
-    public List<BookmarkListDTO> findByBookmarkList(LoginSession session){
+    public List<BookmarkListDTO> findByBookmarkList(LoginSession session) {
         List<BookmarkListDTO> bookmarks = bookmarkRepository.findByBookmarkList(session.getId());
         return bookmarks;
     }
