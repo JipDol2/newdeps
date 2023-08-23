@@ -24,7 +24,7 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class ImageService {
 
-    @Value("${com.upload.path.windows}")
+    @Value("${com.upload.path}")
     private String uploadPath;
 
     private final ImageRepository imageRepository;

@@ -9,7 +9,6 @@ import lotte.newdevps.domain.BaseTimeEntity;
 import lotte.newdevps.domain.bookmark.Bookmark;
 import lotte.newdevps.domain.comment.Comment;
 import lotte.newdevps.domain.image.Image;
-import lotte.newdevps.domain.place.Place;
 import lotte.newdevps.domain.user.User;
 import lotte.newdevps.dto.post.request.PostUpdateDTO;
 
@@ -70,11 +69,17 @@ public class Post extends BaseTimeEntity {
         this.dateTime = dto.getDateTime();
     }
 
-    public void addImages(Image image){
-        image.setPost(this);
+    public void addImages(List<Image> images){
+        if(images != null) {
+            images.forEach(image -> image.setPost(this));
+        }
     }
 
     public void setBookmark(Bookmark bookmark){
         this.bookmark = bookmark;
+    }
+
+    public void countView(){
+        this.viewCount++;
     }
 }

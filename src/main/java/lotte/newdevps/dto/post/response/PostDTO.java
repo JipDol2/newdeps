@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 public class PostDTO {
 
+    private Long postId;
     private String content;
     private Long viewCount;
     private String placeTitle;
@@ -25,13 +26,15 @@ public class PostDTO {
     private List<String> imagesPath;
 
     @Builder
-    public PostDTO(String content,
+    public PostDTO(Long postId,
+                   String content,
                    Long viewCount,
                    String placeTitle,
                    Double latitude,
                    Double longitude,
                    LocalDate dateTime,
                    List<String> imagesPath) {
+        this.postId = postId;
         this.content = content;
         this.viewCount = viewCount;
         this.placeTitle = placeTitle;
@@ -43,22 +46,30 @@ public class PostDTO {
 
     public static PostDTO toDto(Post post) {
         return PostDTO.builder()
+                .postId(post.getId())
                 .content(post.getContent())
                 .placeTitle(post.getPlaceName())
                 .dateTime(post.getDateTime())
                 .latitude(post.getLatitude())
                 .longitude(post.getLongitude())
+                .imagesPath(post.getImages().stream()
+                        .map(image -> image.getImagePath())
+                        .collect(Collectors.toList()))
                 .build();
     }
 
     public static List<PostDTO> toDtoList(List<Post> posts) {
         return posts.stream()
                 .map(p -> PostDTO.builder()
+                        .postId(p.getId())
                         .content(p.getContent())
                         .placeTitle(p.getPlaceName())
                         .dateTime(p.getDateTime())
                         .latitude(p.getLatitude())
                         .longitude(p.getLongitude())
+                        .imagesPath(p.getImages().stream()
+                                .map(image -> image.getImagePath())
+                                .collect(Collectors.toList()))
                         .build())
                 .collect(Collectors.toList());
     }
