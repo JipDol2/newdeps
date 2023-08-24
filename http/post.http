@@ -27,7 +27,7 @@ Content-Disposition: form-data; name="longitude"
 
 ### 게시글 저장 2
 POST http://localhost:8080/api/post
-Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkyMzY2ODM2LCJleHAiOjE2OTIzNjg2MzZ9.6UVjZeM1TkypwD1Uu7ecNZhp7RtP_d99fm7XkE4PY70
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkyODg0ODc1LCJleHAiOjE2OTI4ODY2NzV9.DvofnxVHsu1Pdp12jT6p5NWHxE0O_KD8ZU2ezcukO_U
 Content-Type: multipart/form-data; boundary=boundary
 
 --boundary

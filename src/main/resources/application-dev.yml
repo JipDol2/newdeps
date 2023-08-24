@@ -30,7 +30,7 @@ spring:
 
 com:
   upload:
-    path: /home/newdeps/newdeps
+    path: /home/newdeps/
 #    path: D:/
 
 jwt:

@@ -52,7 +52,7 @@ public class ImageService {
 
         return ImageDTO.builder()
                 .originalFileName(file.getOriginalFilename())
-                .storedFileName(imageName)
+                .storedFileName(today+File.separator+imageName)
                 .imagePath(saveName)
                 .build();
     }
