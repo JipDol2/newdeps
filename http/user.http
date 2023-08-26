@@ -9,7 +9,7 @@ Content-Type: application/json
 
 ### 프로필 사진 업로드
 POST http://localhost:8080/api/user/profile/image
-Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkyMzYyNTQyLCJleHAiOjE2OTIzNjQzNDJ9.oruVZojU1CIclP4Hb21g448DpBkdj6zO8_OlbiW5bAc
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzMDE5OTA1LCJleHAiOjE2OTMwMjE3MDV9.W7jxASVTRPWsXy7ygNNY0m1d3i6AZpqfYGH2exJl8Rc
 Content-Type: multipart/form-data; boundary=boundary
 
 --boundary
@@ -18,3 +18,8 @@ Content-Type: image/gif
 
 <D:\test.jpg
 --boundary--
+
+### 회원 조회
+GET http://localhost:8080/api/user/profile
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzMDE5OTA1LCJleHAiOjE2OTMwMjE3MDV9.W7jxASVTRPWsXy7ygNNY0m1d3i6AZpqfYGH2exJl8Rc
+Content-Type: application/json

@@ -1,0 +1,19 @@
+### 추천장소 저장
+POST http://localhost:8080/api/place
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzMDE4NjY5LCJleHAiOjE2OTMwMjA0Njl9.oqSjqD8vb0G_UAQu1vUy917oziNG_yj87SWW4AVraXI
+Content-Type: application/json
+
+{
+  "requestList" : [{
+    "latitude" : 27.55,
+    "longitude" : 42.56,
+    "category" : "FOOD",
+    "placeName" : "paris burger"
+  },{
+    "latitude" : 27.55,
+    "longitude" : 42.56,
+    "category" : "ACCOMMODATION",
+    "placeName" : "nomad Accommodataion"
+  }
+  ]
+}
