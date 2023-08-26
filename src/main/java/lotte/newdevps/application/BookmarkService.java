@@ -61,6 +61,23 @@ public class BookmarkService {
         bookmarkRepository.save(bookmark);
     }
 
+    public void deleteBookmark(LoginSession session,Long id,BookmarkSaveDTO bookmarkSaveDTO){
+        User user = userRepository.findById(session.getId())
+                .orElseThrow(() -> new UserNotFoundException());
+
+        Place place=null;
+        Post post=null;
+        if(bookmarkSaveDTO.getBookmarkType().equals(BookmarkType.RECOMMEND_PLACE)){
+            place = placeRepository.findById(id)
+                    .orElseThrow(()->new PlaceNotFoundException());
+        }
+        if(bookmarkSaveDTO.getBookmarkType().equals(BookmarkType.POST)){
+            post = postRepository.findById(id)
+                    .orElseThrow(()->new PostNotFoundException());
+        }
+        bookmarkRepository.deleteBookmarkByUserAndPlaceOrPost(user,place,post);
+    }
+
     public List<PostDTO> findBookmarkPostList(LoginSession session) {
         List<Bookmark> bookmarks = bookmarkRepository.findAllByBookmarkPost(session.getId());
         List<PostDTO> posts = bookmarks.stream()

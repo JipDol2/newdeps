@@ -1,6 +1,7 @@
 package lotte.newdevps.ui;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import lotte.newdevps.application.BookmarkService;
 import lotte.newdevps.common.response.CommonListResponseEntity;
@@ -28,19 +29,28 @@ public class BookmarkController {
     /**
      * 북마크 저장 (B001)
      */
-    @NoAuth
     @PostMapping("/{id}")
-    public CommonResponseEntity<?> saveBookmark(@Authentication LoginSession session, @PathVariable Long id, @RequestBody BookmarkSaveDTO bookmarkDTO){
+    public CommonResponseEntity<Void> saveBookmark(@Authentication LoginSession session, @PathVariable Long id, @RequestBody BookmarkSaveDTO bookmarkDTO){
         bookmarkService.saveBookmark(session,id,bookmarkDTO);
         return CommonResponseEntity.toResponseEntity(ResponseType.B001,null,0);
     }
 
     /**
-     * 추천 장소 북마크 조회 (B002)
+     * 북마크 취소(B006)
      */
-    @GetMapping("/place")
-    public CommonResponseEntity<?> findByRecommendBookmarkList(@Authentication LoginSession session){
-        return null;
+    @DeleteMapping("/{id}")
+    public CommonResponseEntity<Void> deleteBookmark(@Authentication LoginSession session,@PathVariable Long id, @RequestBody BookmarkSaveDTO bookmarkSaveDTO){
+        bookmarkService.deleteBookmark(session,id,bookmarkSaveDTO);
+        return CommonResponseEntity.toResponseEntity(ResponseType.B006,null,0);
+    }
+
+    /**
+     * 북마크 조회 (B002)
+     */
+    @GetMapping
+    public CommonListResponseEntity<?> findByRecommendBookmarkList(@Authentication LoginSession session){
+        List<BookmarkListDTO> bookmarkList = bookmarkService.findByBookmarkList(session);
+        return CommonListResponseEntity.toListResponseEntity(ResponseType.B002,bookmarkList,bookmarkList.size());
     }
 
     /**
