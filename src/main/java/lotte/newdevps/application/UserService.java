@@ -1,6 +1,7 @@
 package lotte.newdevps.application;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.java.Log;
 import lombok.extern.slf4j.Slf4j;
 import lotte.newdevps.domain.image.Image;
 import lotte.newdevps.domain.image.ImageRepository;
@@ -10,7 +11,8 @@ import lotte.newdevps.domain.user.UserRepository;
 import lotte.newdevps.dto.image.ImageDTO;
 import lotte.newdevps.dto.user.request.UserProfileImageRequestDTO;
 import lotte.newdevps.dto.user.request.UserSignUpDTO;
-import lotte.newdevps.dto.user.response.UserDTO;
+import lotte.newdevps.dto.user.response.UserFindDTO;
+import lotte.newdevps.dto.user.response.UserSaveDTO;
 import lotte.newdevps.dto.user.response.UserProfileImageResponseDTO;
 import lotte.newdevps.exception.user.UserNotFoundException;
 import lotte.newdevps.ui.auth.LoginSession;
@@ -27,9 +29,9 @@ public class UserService {
     private final ImageService imageService;
     private final ImageRepository imageRepository;
 
-    public UserDTO join(String socialType,UserSignUpDTO userDto){
+    public UserSaveDTO join(String socialType, UserSignUpDTO userDto){
         User user = userRepository.save(UserSignUpDTO.toEntity(socialType,userDto));
-        return UserDTO.toDto(user);
+        return UserSaveDTO.toDto(user);
     }
 
     public UserProfileImageResponseDTO saveProfileImage(LoginSession session, UserProfileImageRequestDTO imageDTO){
@@ -48,6 +50,13 @@ public class UserService {
         user.setImage(saveImage);
 
         return new UserProfileImageResponseDTO(saveImage.getImagePath());
+    }
+
+    public UserFindDTO findByUser(LoginSession session){
+        User user = userRepository.findById(session.getId())
+                .orElseThrow(() -> new UserNotFoundException());
+
+        return UserFindDTO.toDto(user);
     }
 
 }

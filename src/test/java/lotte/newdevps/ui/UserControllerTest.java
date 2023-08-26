@@ -4,17 +4,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import lotte.newdevps.application.UserService;
 import lotte.newdevps.config.WebMvcConfig;
 import lotte.newdevps.dto.user.request.UserSignUpDTO;
-import lotte.newdevps.dto.user.response.UserDTO;
+import lotte.newdevps.dto.user.response.UserSaveDTO;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.data.jpa.mapping.JpaMetamodelMappingContext;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -50,7 +48,7 @@ class UserControllerTest {
 
         //userId,loginId,nickname
         //when
-        when(userService.join(any(),any())).thenReturn(new UserDTO(1L,"1243532","jipdol2"));
+        when(userService.join(any(),any())).thenReturn(new UserSaveDTO(1L,"1243532","jipdol2"));
 
         //expected
         mockMvc.perform(post(URL+"/signUp/github")

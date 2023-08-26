@@ -8,7 +8,8 @@ import lotte.newdevps.common.response.CommonResponseEntity;
 import lotte.newdevps.common.response.ResponseType;
 import lotte.newdevps.dto.user.request.UserProfileImageRequestDTO;
 import lotte.newdevps.dto.user.request.UserSignUpDTO;
-import lotte.newdevps.dto.user.response.UserDTO;
+import lotte.newdevps.dto.user.response.UserFindDTO;
+import lotte.newdevps.dto.user.response.UserSaveDTO;
 import lotte.newdevps.dto.user.response.UserProfileImageResponseDTO;
 import lotte.newdevps.ui.auth.Authentication;
 import lotte.newdevps.ui.auth.LoginSession;
@@ -28,8 +29,8 @@ public class UserController {
      */
     @NoAuth
     @PostMapping("/signUp/{socialType}")
-    public CommonResponseEntity<UserDTO> signUp(@PathVariable String socialType, @RequestBody @Valid UserSignUpDTO userDto){
-        UserDTO user = userService.join(socialType.toUpperCase(), userDto);
+    public CommonResponseEntity<UserSaveDTO> signUp(@PathVariable String socialType, @RequestBody @Valid UserSignUpDTO userDto){
+        UserSaveDTO user = userService.join(socialType.toUpperCase(), userDto);
         return CommonResponseEntity.toResponseEntity(ResponseType.U001,user,0);
     }
 
@@ -42,4 +43,11 @@ public class UserController {
         return CommonResponseEntity.toResponseEntity(ResponseType.U002,userService.saveProfileImage(session,imageDTO),1);
     }
 
+    /**
+     * 유저 정보 조회(U003)
+     */
+    @GetMapping("/profile")
+    public CommonResponseEntity<UserFindDTO> findByUserInfo(@Authentication LoginSession session){
+        return CommonResponseEntity.toResponseEntity(ResponseType.U003,userService.findByUser(session),1);
+    }
 }
