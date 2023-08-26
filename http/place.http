@@ -1,6 +1,6 @@
 ### 추천장소 저장
 POST http://localhost:8080/api/place
-Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzMDE4NjY5LCJleHAiOjE2OTMwMjA0Njl9.oqSjqD8vb0G_UAQu1vUy917oziNG_yj87SWW4AVraXI
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzMDI3MTYxLCJleHAiOjE2OTMwMjg5NjF9.O_44NbAvq_LJyVAPjgi9mt7iliEPPmRzVG2j4wn73R8
 Content-Type: application/json
 
 {

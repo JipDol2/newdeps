@@ -1,13 +1,41 @@
 ### 북마크 저장
 POST http://localhost:8080/api/bookmark/1
-Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkyMzY2ODM2LCJleHAiOjE2OTIzNjg2MzZ9.6UVjZeM1TkypwD1Uu7ecNZhp7RtP_d99fm7XkE4PY70
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzMDI3MTYxLCJleHAiOjE2OTMwMjg5NjF9.O_44NbAvq_LJyVAPjgi9mt7iliEPPmRzVG2j4wn73R8
 Content-Type: application/json
 
 {
   "bookmarkType" : "POST"
 }
 
+### 북마크 저장
+POST http://localhost:8080/api/bookmark/1
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzMDI3MTYxLCJleHAiOjE2OTMwMjg5NjF9.O_44NbAvq_LJyVAPjgi9mt7iliEPPmRzVG2j4wn73R8
+Content-Type: application/json
+
+{
+"bookmarkType" : "RECOMMEND_PLACE"
+}
+
+### 북마크 저장
+POST http://localhost:8080/api/bookmark/2
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzMDI3MTYxLCJleHAiOjE2OTMwMjg5NjF9.O_44NbAvq_LJyVAPjgi9mt7iliEPPmRzVG2j4wn73R8
+Content-Type: application/json
+
+{
+"bookmarkType" : "RECOMMEND_PLACE"
+}
+
+
 ### 게시글 북마크 리스트 조회
 GET http://localhost:8080/api/bookmark/list/post
-Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkyMzY2ODM2LCJleHAiOjE2OTIzNjg2MzZ9.6UVjZeM1TkypwD1Uu7ecNZhp7RtP_d99fm7XkE4PY70
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzMDI3MTYxLCJleHAiOjE2OTMwMjg5NjF9.O_44NbAvq_LJyVAPjgi9mt7iliEPPmRzVG2j4wn73R8
 Content-Type: application/json
+
+### 북마크 삭제
+DELETE http://localhost:8080/api/bookmark/1
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzMDI3MTYxLCJleHAiOjE2OTMwMjg5NjF9.O_44NbAvq_LJyVAPjgi9mt7iliEPPmRzVG2j4wn73R8
+Content-Type: application/json
+
+{
+  "bookmarkType" : "RECOMMEND_PLACE"
+}

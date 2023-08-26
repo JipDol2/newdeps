@@ -27,7 +27,7 @@ Content-Disposition: form-data; name="longitude"
 
 ### 게시글 저장 2
 POST http://localhost:8080/api/post
-Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzMDE3MjE1LCJleHAiOjE2OTMwMTkwMTV9.p2KsRDsEWbiLM5b0sG6NbWk9LbMh56hfj4BWm9kgVSU
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzMDI3MTYxLCJleHAiOjE2OTMwMjg5NjF9.O_44NbAvq_LJyVAPjgi9mt7iliEPPmRzVG2j4wn73R8
 Content-Type: multipart/form-data; boundary=boundary
 
 --boundary
@@ -59,7 +59,7 @@ Content-Type: image/gif
 
 ### 게시글 전체 조회
 GET http://localhost:8080/api/post/all
-Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzMDE3MjE1LCJleHAiOjE2OTMwMTkwMTV9.p2KsRDsEWbiLM5b0sG6NbWk9LbMh56hfj4BWm9kgVSU
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzMDI2MTIwLCJleHAiOjE2OTMwMjc5MjB9.x0w5BzVG6mwOND13nfU6yW3fiKaBy31bTVGl9DoT9l4
 
 ### 게시글 단건 조회
 GET http://localhost:8080/api/post/1
