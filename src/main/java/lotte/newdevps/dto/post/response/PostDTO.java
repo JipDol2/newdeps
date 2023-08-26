@@ -68,7 +68,7 @@ public class PostDTO {
                         .latitude(p.getLatitude())
                         .longitude(p.getLongitude())
                         .imagesPath(p.getImages().stream()
-                                .map(image -> image.getImagePath())
+                                .map(image -> image.getStoredFileName())
                                 .collect(Collectors.toList()))
                         .build())
                 .collect(Collectors.toList());

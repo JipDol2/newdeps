@@ -5,6 +5,7 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lotte.newdevps.domain.BaseTimeEntity;
 import lotte.newdevps.domain.post.Post;
 import lotte.newdevps.domain.user.User;
 
@@ -12,7 +13,7 @@ import lotte.newdevps.domain.user.User;
 @Entity
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Table(name = "IMAGE")
-public class Image {
+public class Image extends BaseTimeEntity {
 
     @Id @GeneratedValue
     private Long id;
