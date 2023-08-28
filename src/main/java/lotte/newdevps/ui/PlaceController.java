@@ -47,6 +47,7 @@ public class PlaceController {
     @NoAuth
     @PostMapping
     public CommonListResponseEntity<PlaceDTO> savePlace(@RequestBody CommonListRequestEntity<PlaceSaveDTO> placeDTO){
+        placeDTO.getRequestList().forEach(placeDto-> log.info("placeDto : {}",placeDto.toString()));
         return CommonListResponseEntity.toListResponseEntity(ResponseType.L003,placeService.save(placeDTO.getRequestList()),0);
     }
 }
