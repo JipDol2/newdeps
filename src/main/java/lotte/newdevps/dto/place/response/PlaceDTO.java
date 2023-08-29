@@ -20,9 +20,22 @@ public class PlaceDTO {
     private String address;
     private String categoryName;
     private Double starRating;
+    private String detailUrl;
+    private String imageUrl;
 
     @Builder
-    public PlaceDTO(Long id, Double latitude, Double longitude, String category, String placeName,String address,String categoryName,Double starRating) {
+    public PlaceDTO(
+            Long id,
+            Double latitude,
+            Double longitude,
+            String category,
+            String placeName,
+            String address,
+            String categoryName,
+            Double starRating,
+            String detailUrl,
+            String imageUrl
+    ){
         this.id = id;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -31,6 +44,8 @@ public class PlaceDTO {
         this.address = address;
         this.categoryName = categoryName;
         this.starRating = starRating;
+        this.detailUrl = detailUrl;
+        this.imageUrl = imageUrl;
     }
 
     public static PlaceDTO toPlaceDto(Place place){
@@ -43,6 +58,8 @@ public class PlaceDTO {
                 .address(place.getAddress())
                 .categoryName(place.getCategoryName())
                 .starRating(place.getStarRating())
+                .detailUrl(place.getDetailUrl())
+                .imageUrl(place.getImageUrl())
                 .build();
     }
     public static List<PlaceDTO> toPlaceDtoList(List<Place> places){
@@ -56,6 +73,8 @@ public class PlaceDTO {
                         .address(place.getAddress())
                         .categoryName(place.getCategoryName())
                         .starRating(place.getStarRating())
+                        .detailUrl(place.getDetailUrl())
+                        .imageUrl(place.getImageUrl())
                         .build())
                 .collect(Collectors.toList());
     }

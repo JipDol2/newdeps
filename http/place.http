@@ -1,6 +1,6 @@
 ### 추천장소 저장
 POST http://localhost:8080/api/place
-Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzMjI3NTI4LCJleHAiOjE2OTMyMjkzMjh9.MgOIxxmWnQNKCMBkG_I8_HOmCe5Pyxgc1r_qhKZBNao
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzMzEzODY2LCJleHAiOjE2OTMzMTU2NjZ9.Uh2wimkfT6wTP738tY9y1jl3fP54x71hvrR46HVcZag
 Content-Type: application/json
 
 {
@@ -11,7 +11,9 @@ Content-Type: application/json
     "placeName" : "paris burger",
     "address" : "잠실 올림픽로 300 롯데타워 20층",
     "categoryName" : "카테고리 이름 > 식품 > 풀무원 > 순두부",
-    "starRating" : 4.5
+    "starRating" : 4.5,
+    "detailUrl" : "http://place.map.kakao.com/1389835339",
+    "imageUrl" : "http://place.image.kakao.com/1389835339"
   },{
     "latitude" : 27.55,
     "longitude" : 42.56,
@@ -19,7 +21,9 @@ Content-Type: application/json
     "placeName" : "nomad Accommodataion",
     "address" : "성수 서울숲 한가운데 노란 돗자리",
     "categoryName" : "카테고리 이름 > 닭 > 튀김 > 치킨",
-    "starRating" : 2.0
+    "starRating" : 2.0,
+    "detailUrl" : "http://place.map.kakao.com/1389835339",
+    "imageUrl" : "http://place.image.kakao.com/1389835339"
   }
   ]
 }

@@ -36,6 +36,10 @@ public class Place extends BaseTimeEntity {
 
     private Double starRating;
 
+    private String detailUrl;
+
+    private String imageUrl;
+
     @OneToMany(mappedBy = "place")
     private List<ItineraryPlace> itineraryPlaces = new ArrayList<>();
 
@@ -43,7 +47,17 @@ public class Place extends BaseTimeEntity {
     private Bookmark bookmark;
 
     @Builder
-    public Place(Double latitude, Double longitude, PlaceCategory category, String placeName, String address,String categoryName,Double starRating) {
+    public Place(
+            Double latitude,
+            Double longitude,
+            PlaceCategory category,
+            String placeName,
+            String address,
+            String categoryName,
+            Double starRating,
+            String detailUrl,
+            String imageUrl
+    ) {
         this.latitude = latitude;
         this.longitude = longitude;
         this.category = category;
@@ -51,6 +65,8 @@ public class Place extends BaseTimeEntity {
         this.address = address;
         this.categoryName = categoryName;
         this.starRating = starRating;
+        this.detailUrl = detailUrl;
+        this.imageUrl = imageUrl;
     }
 
     public void setBookmark(Bookmark bookmark){

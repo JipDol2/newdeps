@@ -23,6 +23,8 @@ public class PlaceSaveDTO {
     private String address;
     private String categoryName;
     private Double starRating;
+    private String detailUrl;
+    private String imageUrl;
 
     public static List<Place> toEntityList(List<PlaceSaveDTO> placeDTO){
         return placeDTO.stream()
@@ -34,6 +36,8 @@ public class PlaceSaveDTO {
                         .address(placeDto.getAddress())
                         .categoryName(placeDto.getCategoryName())
                         .starRating(placeDto.getStarRating())
+                        .detailUrl(placeDto.getDetailUrl())
+                        .imageUrl(placeDto.getImageUrl())
                         .build())
                 .collect(Collectors.toList());
     }
