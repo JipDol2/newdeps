@@ -23,25 +23,35 @@ public class PostSaveDTO {
     private LocalDate dateTime;
     private Double latitude;
     private Double longitude;
+    private String address;
+    private String categoryName;
+    private Double starRating;
 
     private List<MultipartFile> imageFiles;
 
     @Builder
-    public PostSaveDTO(String content, String placeName, LocalDate dateTime, Double latitude, Double longitude) {
+    public PostSaveDTO(String content, String placeName, LocalDate dateTime, Double latitude, Double longitude,String address,String categoryName,Double starRating) {
         this.content = content;
         this.placeName = placeName;
         this.dateTime = dateTime;
         this.latitude = latitude;
         this.longitude = longitude;
+        this.address = address;
+        this.categoryName = categoryName;
+        this.starRating = starRating;
     }
 
     public static Post toEntity(User user, PostSaveDTO dto){
         return Post.builder()
                 .content(dto.getContent())
+                .viewCount(0L)
                 .placeName(dto.getPlaceName())
                 .dateTime(dto.getDateTime())
                 .latitude(dto.getLatitude())
                 .longitude(dto.getLongitude())
+                .address(dto.getAddress())
+                .categoryName(dto.getCategoryName())
+                .starRating(dto.getStarRating())
                 .user(user)
                 .build();
     }

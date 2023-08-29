@@ -22,6 +22,9 @@ public class PostDTO {
     private Double latitude;
     private Double longitude;
     private LocalDate dateTime;
+    private String address;
+    private String categoryName;
+    private Double starRating;
 
     private List<String> imagesPath;
 
@@ -33,6 +36,9 @@ public class PostDTO {
                    Double latitude,
                    Double longitude,
                    LocalDate dateTime,
+                   String address,
+                   String categoryName,
+                   Double starRating,
                    List<String> imagesPath) {
         this.postId = postId;
         this.content = content;
@@ -41,6 +47,9 @@ public class PostDTO {
         this.latitude = latitude;
         this.longitude = longitude;
         this.dateTime = dateTime;
+        this.address = address;
+        this.categoryName = categoryName;
+        this.starRating = starRating;
         this.imagesPath = imagesPath;
     }
 
@@ -48,10 +57,14 @@ public class PostDTO {
         return PostDTO.builder()
                 .postId(post.getId())
                 .content(post.getContent())
+                .viewCount(post.getViewCount())
                 .placeTitle(post.getPlaceName())
                 .dateTime(post.getDateTime())
                 .latitude(post.getLatitude())
                 .longitude(post.getLongitude())
+                .address(post.getAddress())
+                .categoryName(post.getCategoryName())
+                .starRating(post.getStarRating())
                 .imagesPath(post.getImages().stream()
                         .map(image -> image == null ? null : image.getStoredFileName())
                         .collect(Collectors.toList()))
@@ -63,10 +76,14 @@ public class PostDTO {
                 .map(p -> PostDTO.builder()
                         .postId(p.getId())
                         .content(p.getContent())
+                        .viewCount(p.getViewCount())
                         .placeTitle(p.getPlaceName())
                         .dateTime(p.getDateTime())
                         .latitude(p.getLatitude())
                         .longitude(p.getLongitude())
+                        .address(p.getAddress())
+                        .categoryName(p.getCategoryName())
+                        .starRating(p.getStarRating())
                         .imagesPath(p.getImages().stream()
                                 .map(image -> image == null ? null : image.getStoredFileName())
                                 .collect(Collectors.toList()))

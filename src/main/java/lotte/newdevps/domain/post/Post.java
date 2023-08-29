@@ -37,6 +37,12 @@ public class Post extends BaseTimeEntity {
 
     private LocalDate dateTime;
 
+    private String address;
+
+    private String categoryName;
+
+    private Double starRating;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id",foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
     private User user;
@@ -51,13 +57,17 @@ public class Post extends BaseTimeEntity {
     private Bookmark bookmark;
 
     @Builder
-    public Post(String content, String placeName, Double latitude, Double longitude, LocalDate dateTime, User user) {
+    public Post(String content, Long viewCount, String placeName, Double latitude, Double longitude, LocalDate dateTime, String address,String categoryName,Double starRating, User user) {
         this.content = content;
+        this.viewCount = viewCount;
         this.viewCount = 0L;
         this.placeName = placeName;
         this.latitude = latitude;
         this.longitude = longitude;
         this.dateTime = dateTime;
+        this.address = address;
+        this.categoryName = categoryName;
+        this.starRating = starRating;
         this.user = user;
     }
 
@@ -67,6 +77,9 @@ public class Post extends BaseTimeEntity {
         this.latitude = dto.getLatitude();
         this.longitude = dto.getLongitude();
         this.dateTime = dto.getDateTime();
+        this.address = dto.getAddress();
+        this.categoryName = dto.getCategoryName();
+        this.starRating = dto.getStarRating();
     }
 
     public void addImages(List<Image> images){
