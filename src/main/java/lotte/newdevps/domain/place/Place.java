@@ -36,8 +36,10 @@ public class Place extends BaseTimeEntity {
 
     private Double starRating;
 
+    @Column(length = 500)
     private String detailUrl;
 
+    @Column(length = 500)
     private String imageUrl;
 
     @OneToMany(mappedBy = "place")
