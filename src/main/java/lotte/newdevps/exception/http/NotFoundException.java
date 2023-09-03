@@ -5,7 +5,7 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 
 public class NotFoundException extends NewdevpsException {
-    public NotFoundException() {
-        super(HttpStatus.NOT_FOUND);
-    }
+//    public NotFoundException() {
+//        super(HttpStatus.NOT_FOUND);
+//    }
 }

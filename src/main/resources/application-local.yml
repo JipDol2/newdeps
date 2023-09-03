@@ -7,6 +7,19 @@ spring:
       on-profile: local
 
   datasource:
+#    url: jdbc:mysql://localhost:3307/dbtravelmaker2
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    username: newdeps
+#    password: "!newdeps1234"
+
+    url: jdbc:h2:mem:newDevps;NON_KEYWORDS=USER
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+
+  h2:
+    console:
+      enabled: true
     url: jdbc:mysql://localhost:3306/newdevps?useSSL=false&&allowPublicKeyRetrieval=true&characterEncoding=UTF-8&serverTimezone=UTC
     username: admin
     password: newdevps1!
@@ -19,9 +32,34 @@ spring:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     properties:
       hibernate:
-#        show_sql: true
+        show_sql: true
         format_sql: true
 #    defer-datasource-initialization: true
 
+  servlet:
+    multipart:
+      max-request-size: 10MB
+      max-file-size: 10MB
+
+ssh:
+  remote_jump_host: 43.200.32.96
+  ssh_port: 22
+  user: newdeps
+  password: "!newdeps1234"
+  database_port: 3306
+
+com:
+  upload:
+    path:
+      D:/
+#      /home/newdeps/newdeps
+
+
 jwt:
   secret: h2qRTFW0LM76tqMUf2RSInlD+D/VAaM5x6b9Y6hCCiU=
+
+logging:
+  level:
+    org.hibernate.sql: debug
+    org.hibernate.type.descriptor.sql: trace
+    org.apache.coyote.http11.Http11InputBuffer: debug

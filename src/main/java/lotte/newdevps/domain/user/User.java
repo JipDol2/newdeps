@@ -2,10 +2,12 @@ package lotte.newdevps.domain.user;
 
 import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lotte.newdevps.domain.BaseTimeEntity;
 import lotte.newdevps.domain.bookmark.Bookmark;
+import lotte.newdevps.domain.image.Image;
 import lotte.newdevps.domain.itinerary.Itinerary;
 import lotte.newdevps.domain.post.Post;
 
@@ -33,4 +35,18 @@ public class User extends BaseTimeEntity {
 
     @OneToMany(mappedBy = "user")
     private List<Bookmark> bookmarks = new ArrayList<>();
+
+    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL,orphanRemoval = true)
+    @JoinColumn(name = "image_id",foreignKey = @ForeignKey(ConstraintMode.NO_CONSTRAINT))
+    private Image image;
+
+    @Builder
+    public User(String loginId, String nickname) {
+        this.loginId = loginId;
+        this.nickname = nickname;
+    }
+
+    public void setImage(Image image){
+        this.image = image;
+    }
 }

@@ -1,0 +1,25 @@
+### 회원가입
+POST http://localhost:8080/api/user/signUp/Github
+Content-Type: application/json
+
+{
+  "loginId" : "1773272",
+  "nickname" : "jipdol2"
+}
+
+### 프로필 사진 업로드
+POST http://localhost:8080/api/user/profile/image
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzMDE5OTA1LCJleHAiOjE2OTMwMjE3MDV9.W7jxASVTRPWsXy7ygNNY0m1d3i6AZpqfYGH2exJl8Rc
+Content-Type: multipart/form-data; boundary=boundary
+
+--boundary
+Content-Disposition: form-data; name="file"; filename="test.jpg";
+Content-Type: image/gif
+
+<D:\test.jpg
+--boundary--
+
+### 회원 조회
+GET http://localhost:8080/api/user/profile
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzMDE5OTA1LCJleHAiOjE2OTMwMjE3MDV9.W7jxASVTRPWsXy7ygNNY0m1d3i6AZpqfYGH2exJl8Rc
+Content-Type: application/json
