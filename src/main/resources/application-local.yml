@@ -59,3 +59,4 @@ logging:
     org.hibernate.sql: debug
     org.hibernate.type.descriptor.sql: trace
 #    org.apache.coyote.http11.Http11InputBuffer: debug
+
