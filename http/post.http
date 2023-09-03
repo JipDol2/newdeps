@@ -1,0 +1,94 @@
+### 게시글 저장
+POST http://localhost:8080/api/post
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzMzExMDI2LCJleHAiOjE2OTMzMTI4MjZ9.cDGywybFcwjnBBBcQrdCM0nzKR89IUBZCly-wr_H7uA
+Content-Type: multipart/form-data; boundary=boundary
+
+--boundary
+Content-Disposition: form-data; name="content"
+
+save Post
+--boundary
+Content-Disposition: form-data; name="placeName"
+
+LA street 28-19
+--boundary
+Content-Disposition: form-data; name="dateTime"
+
+2023-08-04
+--boundary
+Content-Disposition: form-data; name="latitude"
+
+12.8892
+--boundary
+Content-Disposition: form-data; name="longitude"
+
+49.7756
+--boundary
+Content-Disposition: form-data; name="address"
+
+Air&B 1005 1302-2
+--boundary
+Content-Disposition: form-data; name="categoryName"
+
+car>martiz
+--boundary
+Content-Disposition: form-data; name="starRating"
+
+3.5
+--boundary--
+
+### 게시글 저장 2
+POST http://localhost:8080/api/post
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzMzExMDI2LCJleHAiOjE2OTMzMTI4MjZ9.cDGywybFcwjnBBBcQrdCM0nzKR89IUBZCly-wr_H7uA
+Content-Type: multipart/form-data; boundary=boundary
+
+--boundary
+Content-Disposition: form-data; name="content"
+
+save Post
+--boundary
+Content-Disposition: form-data; name="placeName"
+
+LA street 28-19
+--boundary
+Content-Disposition: form-data; name="dateTime"
+
+2023-08-04
+--boundary
+Content-Disposition: form-data; name="latitude"
+
+12.8892
+--boundary
+Content-Disposition: form-data; name="longitude"
+
+49.7756
+--boundary
+Content-Disposition: form-data; name="imageFiles"; filename="test.jpg";
+Content-Type: image/gif
+
+<D:\test.jpg
+--boundary--
+
+### 게시글 전체 조회
+GET http://localhost:8080/api/post/all
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzMDI2MTIwLCJleHAiOjE2OTMwMjc5MjB9.x0w5BzVG6mwOND13nfU6yW3fiKaBy31bTVGl9DoT9l4
+
+### 게시글 단건 조회
+GET http://localhost:8080/api/post/2
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzMzExMDI2LCJleHAiOjE2OTMzMTI4MjZ9.cDGywybFcwjnBBBcQrdCM0nzKR89IUBZCly-wr_H7uA
+
+### 게시글 업데이트
+PUT http://localhost:8080/api/post/1
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkxNjc0ODYwLCJleHAiOjE2OTE2NzY2NjB9.lKFVLjoPbfU1Lj_neXgqpWN1beQwVrvFxmBjsKE0_-k
+Content-Type: application/json
+
+{
+  "content" : "내용을 수정하다",
+  "placeName" : "도로명 주소 수정하다",
+  "dateTime" : "2023-07-17",
+  "latitude" : 12.8892,
+  "longitude" : 49.77256
+}
+
+### 게시글 삭제
+DELETE http://localhost:8080/api/post/1
