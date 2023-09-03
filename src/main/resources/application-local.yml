@@ -20,14 +20,10 @@ spring:
   h2:
     console:
       enabled: true
-    url: jdbc:mysql://localhost:3306/newdevps?useSSL=false&&allowPublicKeyRetrieval=true&characterEncoding=UTF-8&serverTimezone=UTC
-    username: admin
-    password: newdevps1!
-    driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
       naming:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     properties:
@@ -62,4 +58,5 @@ logging:
   level:
     org.hibernate.sql: debug
     org.hibernate.type.descriptor.sql: trace
-    org.apache.coyote.http11.Http11InputBuffer: debug
+#    org.apache.coyote.http11.Http11InputBuffer: debug
+
