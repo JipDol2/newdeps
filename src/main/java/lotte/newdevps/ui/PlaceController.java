@@ -3,12 +3,16 @@ package lotte.newdevps.ui;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import lotte.newdevps.application.PlaceService;
+import lotte.newdevps.application.UserService;
 import lotte.newdevps.common.request.CommonListRequestEntity;
 import lotte.newdevps.common.response.CommonListResponseEntity;
 import lotte.newdevps.common.response.CommonResponseEntity;
 import lotte.newdevps.common.response.ResponseType;
 import lotte.newdevps.dto.place.request.PlaceSaveDTO;
 import lotte.newdevps.dto.place.response.PlaceDTO;
+import lotte.newdevps.dto.place.response.PlaceDTOInterface;
+import lotte.newdevps.ui.auth.Authentication;
+import lotte.newdevps.ui.auth.LoginSession;
 import lotte.newdevps.ui.auth.NoAuth;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,8 +40,8 @@ public class PlaceController {
      */
     @NoAuth
     @GetMapping("/all")
-    public CommonListResponseEntity<PlaceDTO> findByPlaceAll(){
-        List<PlaceDTO> placeAll = placeService.findByPlaceAll();
+    public CommonListResponseEntity<PlaceDTO> findByPlaceAll(@Authentication LoginSession session){
+        List<PlaceDTOInterface> placeAll = placeService.findByPlaceAll(session.getId());
         return CommonListResponseEntity.toListResponseEntity(ResponseType.L002,placeAll,placeAll.size());
     }
 

@@ -1,6 +1,6 @@
 ### 북마크 저장
 POST http://localhost:8080/api/bookmark/1
-Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzMDI3MTYxLCJleHAiOjE2OTMwMjg5NjF9.O_44NbAvq_LJyVAPjgi9mt7iliEPPmRzVG2j4wn73R8
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzODMzMTc4LCJleHAiOjE2OTM4MzQ5Nzh9.LCFLy_CZmmxgDmDZNyvWRB_fnH9taQVWgKgdaxTZk_s
 Content-Type: application/json
 
 {
@@ -9,7 +9,7 @@ Content-Type: application/json
 
 ### 북마크 저장
 POST http://localhost:8080/api/bookmark/1
-Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzMDI3MTYxLCJleHAiOjE2OTMwMjg5NjF9.O_44NbAvq_LJyVAPjgi9mt7iliEPPmRzVG2j4wn73R8
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzODM2NDExLCJleHAiOjE2OTM4MzgyMTF9.2nglNcXyTdBBRtMSa-f5OP3nMrvWdvIVZowOHKsJfQ0
 Content-Type: application/json
 
 {
@@ -18,7 +18,7 @@ Content-Type: application/json
 
 ### 북마크 저장
 POST http://localhost:8080/api/bookmark/2
-Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzMDI3MTYxLCJleHAiOjE2OTMwMjg5NjF9.O_44NbAvq_LJyVAPjgi9mt7iliEPPmRzVG2j4wn73R8
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzODM4MTY5LCJleHAiOjE2OTM4Mzk5Njl9.vAUUka0QCHTDHoo3s-JoN8us81sQVnURYZeaTDiuQrw
 Content-Type: application/json
 
 {
