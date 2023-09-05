@@ -12,6 +12,7 @@ import lotte.newdevps.dto.image.ImageDTO;
 import lotte.newdevps.dto.post.request.PostSaveDTO;
 import lotte.newdevps.dto.post.request.PostUpdateDTO;
 import lotte.newdevps.dto.post.response.PostDTO;
+import lotte.newdevps.dto.post.response.PostDTOInterface;
 import lotte.newdevps.exception.post.PostNotFoundException;
 import lotte.newdevps.exception.user.UserNotFoundException;
 import lotte.newdevps.ui.auth.LoginSession;
@@ -77,8 +78,8 @@ public class PostService {
         return postRepository.save(post);
     }
 
-    public List<PostDTO> findByPostsAll() {
-        return PostDTO.toDtoList(postRepository.findAll());
+    public List<PostDTOInterface> findByPostsAll(Long loginId) {
+        return postRepository.findByAllPostDTO(loginId);
     }
 
     public PostDTO findByPostOne(Long postId) {

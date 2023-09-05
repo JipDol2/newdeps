@@ -1,6 +1,6 @@
 ### 북마크 저장
 POST http://localhost:8080/api/bookmark/1
-Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzODMzMTc4LCJleHAiOjE2OTM4MzQ5Nzh9.LCFLy_CZmmxgDmDZNyvWRB_fnH9taQVWgKgdaxTZk_s
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzOTE1ODE0LCJleHAiOjE2OTM5MTc2MTR9.r2Af5KDGG1lD6G3GowpxaNIdb9X4-07gbD-NzcQL8bw
 Content-Type: application/json
 
 {

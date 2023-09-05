@@ -18,7 +18,7 @@ public class PostDTO {
     private Long postId;
     private String content;
     private Long viewCount;
-    private String placeTitle;
+    private String placeName;
     private Double latitude;
     private Double longitude;
     private LocalDate dateTime;
@@ -32,7 +32,7 @@ public class PostDTO {
     public PostDTO(Long postId,
                    String content,
                    Long viewCount,
-                   String placeTitle,
+                   String placeName,
                    Double latitude,
                    Double longitude,
                    LocalDate dateTime,
@@ -43,7 +43,7 @@ public class PostDTO {
         this.postId = postId;
         this.content = content;
         this.viewCount = viewCount;
-        this.placeTitle = placeTitle;
+        this.placeName = placeName;
         this.latitude = latitude;
         this.longitude = longitude;
         this.dateTime = dateTime;
@@ -58,7 +58,7 @@ public class PostDTO {
                 .postId(post.getId())
                 .content(post.getContent())
                 .viewCount(post.getViewCount())
-                .placeTitle(post.getPlaceName())
+                .placeName(post.getPlaceName())
                 .dateTime(post.getDateTime())
                 .latitude(post.getLatitude())
                 .longitude(post.getLongitude())
@@ -77,7 +77,7 @@ public class PostDTO {
                         .postId(p.getId())
                         .content(p.getContent())
                         .viewCount(p.getViewCount())
-                        .placeTitle(p.getPlaceName())
+                        .placeName(p.getPlaceName())
                         .dateTime(p.getDateTime())
                         .latitude(p.getLatitude())
                         .longitude(p.getLongitude())
