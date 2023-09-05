@@ -1,6 +1,6 @@
 ### 게시글 저장
 POST http://localhost:8080/api/post
-Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzMzExMDI2LCJleHAiOjE2OTMzMTI4MjZ9.cDGywybFcwjnBBBcQrdCM0nzKR89IUBZCly-wr_H7uA
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzOTE1ODE0LCJleHAiOjE2OTM5MTc2MTR9.r2Af5KDGG1lD6G3GowpxaNIdb9X4-07gbD-NzcQL8bw
 Content-Type: multipart/form-data; boundary=boundary
 
 --boundary
@@ -71,7 +71,7 @@ Content-Type: image/gif
 
 ### 게시글 전체 조회
 GET http://localhost:8080/api/post/all
-Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzMDI2MTIwLCJleHAiOjE2OTMwMjc5MjB9.x0w5BzVG6mwOND13nfU6yW3fiKaBy31bTVGl9DoT9l4
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzOTE1ODE0LCJleHAiOjE2OTM5MTc2MTR9.r2Af5KDGG1lD6G3GowpxaNIdb9X4-07gbD-NzcQL8bw
 
 ### 게시글 단건 조회
 GET http://localhost:8080/api/post/2

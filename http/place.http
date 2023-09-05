@@ -1,6 +1,6 @@
 ### 추천장소 저장
 POST http://localhost:8080/api/place
-Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzMzEzODY2LCJleHAiOjE2OTMzMTU2NjZ9.Uh2wimkfT6wTP738tY9y1jl3fP54x71hvrR46HVcZag
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzODM4MTY5LCJleHAiOjE2OTM4Mzk5Njl9.vAUUka0QCHTDHoo3s-JoN8us81sQVnURYZeaTDiuQrw
 Content-Type: application/json
 
 {
@@ -27,3 +27,7 @@ Content-Type: application/json
   }
   ]
 }
+
+### 추천장소 전체 조회
+GET http://localhost:8080/api/place/all
+Authorization: eyJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiaWF0IjoxNjkzODM4MTY5LCJleHAiOjE2OTM4Mzk5Njl9.vAUUka0QCHTDHoo3s-JoN8us81sQVnURYZeaTDiuQrw
