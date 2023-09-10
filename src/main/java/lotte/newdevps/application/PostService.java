@@ -2,6 +2,7 @@ package lotte.newdevps.application;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import lotte.newdevps.domain.bookmark.BookmarkRepository;
 import lotte.newdevps.domain.image.Image;
 import lotte.newdevps.domain.image.ImageType;
 import lotte.newdevps.domain.post.Post;
@@ -12,7 +13,6 @@ import lotte.newdevps.dto.image.ImageDTO;
 import lotte.newdevps.dto.post.request.PostSaveDTO;
 import lotte.newdevps.dto.post.request.PostUpdateDTO;
 import lotte.newdevps.dto.post.response.PostDTO;
-import lotte.newdevps.dto.post.response.PostDTOInterface;
 import lotte.newdevps.exception.post.PostNotFoundException;
 import lotte.newdevps.exception.user.UserNotFoundException;
 import lotte.newdevps.ui.auth.LoginSession;
@@ -21,7 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -33,6 +33,7 @@ public class PostService {
     private final PostRepository postRepository;
     private final UserRepository userRepository;
     private final ImageService imageService;
+    private final BookmarkRepository bookmarkRepository;
 
     /**
      * Issue
@@ -78,8 +79,19 @@ public class PostService {
         return postRepository.save(post);
     }
 
-    public List<PostDTOInterface> findByPostsAll(Long loginId) {
-        return postRepository.findByAllPostDTO(loginId);
+    public List<PostDTO> findByPostsAll(Long loginId) {
+
+        Set<Long> bookmarkSet = bookmarkRepository.findAllByBookmarkPost(loginId).stream()
+                .map(bookmark -> bookmark.getPost().getId())
+                .collect(Collectors.toSet());
+
+        List<PostDTO> dtoList = PostDTO.toDtoList(postRepository.findAll());
+        dtoList.forEach(postDTO -> {
+            if(bookmarkSet.contains(postDTO.getPostId())){
+                postDTO.activeBookmarkStatus();
+            }
+        });
+        return dtoList;
     }
 
     public PostDTO findByPostOne(Long postId) {

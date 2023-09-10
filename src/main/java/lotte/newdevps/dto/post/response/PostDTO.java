@@ -25,6 +25,7 @@ public class PostDTO {
     private String address;
     private String categoryName;
     private Double starRating;
+    private String bookmarkStatus = "N";
 
     private List<String> imagesPath;
 
@@ -89,5 +90,9 @@ public class PostDTO {
                                 .collect(Collectors.toList()))
                         .build())
                 .collect(Collectors.toList());
+    }
+
+    public void activeBookmarkStatus() {
+        this.bookmarkStatus = "Y";
     }
 }

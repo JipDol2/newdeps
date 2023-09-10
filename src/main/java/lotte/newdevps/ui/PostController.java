@@ -10,7 +10,6 @@ import lotte.newdevps.dto.post.request.PostSaveDTO;
 import lotte.newdevps.common.response.CommonListResponseEntity;
 import lotte.newdevps.dto.post.request.PostUpdateDTO;
 import lotte.newdevps.dto.post.response.PostDTO;
-import lotte.newdevps.dto.post.response.PostDTOInterface;
 import lotte.newdevps.ui.auth.Authentication;
 import lotte.newdevps.ui.auth.LoginSession;
 import org.springframework.web.bind.annotation.*;
@@ -37,8 +36,8 @@ public class PostController {
      * 게시글 전체 목록 조회(P002)
      */
     @GetMapping("/all")
-    public CommonListResponseEntity<PostDTOInterface> findByPostsAll(@Authentication LoginSession session){
-        List<PostDTOInterface> allPosts = postService.findByPostsAll(session.getId());
+    public CommonListResponseEntity<PostDTO> findByPostsAll(@Authentication LoginSession session){
+        List<PostDTO> allPosts = postService.findByPostsAll(session.getId());
         return CommonListResponseEntity.toListResponseEntity(ResponseType.P002,allPosts,allPosts.size());
     }
 
