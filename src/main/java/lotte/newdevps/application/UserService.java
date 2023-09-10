@@ -49,7 +49,7 @@ public class UserService {
         Image saveImage = imageRepository.save(ImageDTO.toImageEntity(uploadImage));
         user.setImage(saveImage);
 
-        return new UserProfileImageResponseDTO(saveImage.getImagePath());
+        return new UserProfileImageResponseDTO(saveImage.getStoredFileName());
     }
 
     public UserFindDTO findByUser(LoginSession session){
