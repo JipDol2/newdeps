@@ -9,6 +9,7 @@ on:
 
 jobs:
   create_issue_branch_job:
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - name: Create Issue Branch
