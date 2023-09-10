@@ -52,7 +52,7 @@ public class UserService {
         return new UserProfileImageResponseDTO(saveImage.getStoredFileName());
     }
 
-    public UserFindDTO findByUser(LoginSession session){
+    public UserFindDTO findByUser(LoginSession session) {
         User user = userRepository.findById(session.getId())
                 .orElseThrow(() -> new UserNotFoundException());
 
