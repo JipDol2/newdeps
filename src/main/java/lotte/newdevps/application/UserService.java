@@ -58,5 +58,4 @@ public class UserService {
 
         return UserFindDTO.toDto(user);
     }
-
 }
