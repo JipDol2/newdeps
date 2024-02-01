@@ -4,7 +4,7 @@
 - Mobile : Android
 - Front-End : React
 - Back-End : java 17, spring boot 3.1.2, mysql, H2 database, Amazon linux, Amazon RDS
-- devops : jenkins, docker
+- devops : jenkins, docker, test
 
 ## 프로젝트 아키텍처
 ![image](https://github.com/JipDol2/newdeps/assets/55746374/37316ac5-8d00-4ec8-bd48-f3408f4d0d3c)
